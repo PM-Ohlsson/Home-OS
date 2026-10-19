@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080e0c">
-<title>HOME OS — v0.17</title>
+<title>HOME OS — v0.19</title>
 <style>
 :root{--os-root:#080e0c;--os-accent:#d7e5d2;--os-hero-a:#284337;--os-hero-b:#1c3229;--os-hero-c:#14251e;--os-hero-d:#102019;--os-scenes-a:#192b22;--os-scenes-b:#15251e;--os-scene:#24382d;--os-scene-hover:#304638;--os-forecast-a:#172920;--os-forecast-b:#192a23;--os-forecast-c:#14241d;--os-car-a:#2b3c32;--os-car-b:#1b2b23;--os-car-c:#17271f;--os-bar:#3c5042;--os-fill:#cce2c5;--os-detail:#172920;--os-vehicle-a:#284036;--os-vehicle-b:#15251e;--os-vehicle-c:#101d17;--os-track:#415648;--os-weekday:#2b4033;--os-time:#293e31;--os-demo-color:#446957;font-family:Inter,"Segoe UI",Arial,sans-serif;color:#edf3ec;background:var(--os-root);--grain-opacity:0;--text:#edf3ec;--muted:#a5b9aa;--line:#ffffff16;--card:#15251e}
 *{box-sizing:border-box}body{margin:0}button{font:inherit;cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid #d4e5cf;outline-offset:3px}
@@ -112,40 +112,61 @@ body{background:var(--os-root)}
 @media(max-width:720px){.weather-detail{padding:24px 20px}.weather-detail-days{gap:5px}.weather-day{padding:12px 5px}.weather-day .day-high{font-size:17px}.weather-day svg{width:24px;height:24px}.weather-now-main{gap:10px}.weather-now-icon{width:80px;height:80px}.weather-now-temp{font-size:72px}}
 
 
-/* HOME OS v0.17 — Polestar interactive model with lightweight static fallback. */
-.vehicle-view-switch{display:inline-flex;align-self:flex-start;gap:3px;margin:17px 0 0;padding:4px;border-radius:12px;background:#07160f55;border:1px solid #ffffff20}
-.vehicle-view-option{border:0;background:transparent;color:#a6bbaa;font-size:11px;letter-spacing:.25px;padding:10px 15px;border-radius:9px;transition:background .16s,color .16s;white-space:nowrap}
-.vehicle-view-option.is-selected{background:var(--os-accent);color:#183024}
-.vehicle-view-option:focus-visible{outline:2px solid #e5f4de;outline-offset:3px}
-.vehicle-stage{min-height:260px;max-height:450px;height:clamp(290px,47vh,430px);overflow:hidden;isolation:isolate}
-.vehicle-stage .vehicle-image{max-height:92%;height:min(43vh,365px);max-width:82%}
-.vehicle-stage [hidden],.vehicle-model-credit[hidden],.vehicle-gesture-hint[hidden]{display:none!important}
-.vehicle-model-container{position:relative;width:100%;height:100%;min-height:260px;overflow:hidden}
-.vehicle-model-container model-viewer{width:100%;height:100%;background:transparent;--poster-color:transparent;outline:none;display:block;touch-action:pan-y}
-.vehicle-model-status{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;text-align:center;padding:20px;color:#dce9d9;font-size:13px;pointer-events:none;background:radial-gradient(ellipse at center,#1b3026bb,transparent 70%)}
-.vehicle-model-status small{font-size:11px;color:#9cb5a4;max-width:245px;line-height:1.6}
-.vehicle-model-status.is-error{pointer-events:auto;color:#edb9b9}
-.vehicle-gesture-hint{position:absolute;bottom:9px;left:0;right:0;color:#c3d5c4;font-size:11px;letter-spacing:.35px;text-align:center;z-index:1;pointer-events:none}
-.vehicle-gesture-hint span{margin:0 9px;opacity:.5}
-.vehicle-view-footnote{color:#9fb7a6;font-size:11px;line-height:1.4;min-height:16px;text-align:center;margin:-2px 0 14px}
-.vehicle-model-credit{font-size:10px;color:#92aa99;text-align:center;margin:-10px 0 12px}
-.vehicle-model-credit a{color:#c1d7c2;text-decoration:underline;text-underline-offset:2px}
-@media(max-width:850px){.vehicle-stage{height:345px;min-height:290px;max-height:390px}}
-@media(max-width:720px){.vehicle-stage{height:320px;min-height:280px}.vehicle-view-option{padding:10px 11px;font-size:11px}}
+/* HOME OS v0.18 — top-down vehicle image only. */
+.vehicle-stage{min-height:270px;max-height:450px;height:clamp(300px,47vh,420px);overflow:visible;isolation:isolate}
+.vehicle-stage .vehicle-image{max-height:90%;height:min(43vh,360px);max-width:80%;object-fit:contain}
+/* Discreet, accessible source information without large attribution labels. */
+.source-info{position:relative;z-index:7;flex:none}
+.source-info>summary{list-style:none;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#a6c0ac;border:1px solid #ffffff2b;background:#ffffff08;transition:background .15s ease;color-scheme:dark}
+.source-info>summary::-webkit-details-marker{display:none}
+.source-info>summary::marker{content:''}
+.source-info>summary:hover,.source-info[open]>summary{background:#ffffff1b;color:#edf5eb}
+.source-info>summary:focus-visible{outline:2px solid #e4f0dc;outline-offset:3px}
+.source-info>summary svg{width:15px;height:15px;display:block}
+.source-info .source-popover{position:absolute;right:0;top:calc(100% + 9px);width:245px;max-width:calc(100vw - 60px);background:#11231b;color:#c6d9ca;border:1px solid #ffffff36;border-radius:12px;padding:14px 15px;box-shadow:0 14px 35px #0008;font-size:12px;line-height:1.65;letter-spacing:0;text-transform:none;z-index:15}
+.source-info .source-popover a{color:#e6f3e4;text-underline-offset:3px}
+.forecast .heading{position:relative;z-index:9}
+.weather-footer{justify-content:flex-end}
+.weather-footer .source-info{margin-right:auto}
+.weather-footer .source-popover{right:auto;left:0;top:auto;bottom:calc(100% + 9px)}
+.weather-credits{margin-top:25px;font-size:11px;color:#8fa897;line-height:1.8}
+.weather-credits a{color:#b5cbb7;text-underline-offset:3px}
+@media(max-width:850px){.vehicle-stage{min-height:240px;max-height:340px;height:315px}.vehicle-stage .vehicle-image{height:285px}}
+@media(max-width:720px){.vehicle-stage{min-height:220px;max-height:300px;height:290px}.vehicle-stage .vehicle-image{height:260px}}
 
+/* v0.19 — read-only vehicle bridge */
+.vehicle-status-actions{display:flex;gap:9px;flex-wrap:wrap;margin:8px 0 16px}
+.vehicle-refresh,.vehicle-settings-link,.bridge-small-btn{border:1px solid #ffffff36;border-radius:10px;padding:10px 13px;background:#ffffff0a;color:#e5efe6;font-size:12px;min-height:38px}
+.vehicle-refresh:disabled,.bridge-actions button:disabled{opacity:.5;cursor:wait}
+.vehicle-status-actions .vehicle-settings-link{border-color:transparent;color:#c6dbcb}
+.bridge-settings{border-top:1px solid #ffffff25;margin-top:34px;padding-top:26px;max-width:665px}
+.bridge-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.bridge-top h2{font-size:23px;font-weight:350;letter-spacing:-.035em;margin:7px 0 0}
+.bridge-state{font-size:11px;color:#b5cdbb;padding:6px 10px;border:1px solid #ffffff2b;border-radius:20px}
+.bridge-description{margin:13px 0 20px!important;color:#b9cbbd!important;font-size:13px;line-height:1.6}
+.bridge-label{display:block;color:#e0eee2;font-size:13px;margin:0 0 9px}
+.bridge-key-row{display:flex;align-items:center;gap:9px;max-width:550px}
+.bridge-key-row input{flex:1;min-width:0;background:#ffffff0d;color:#edf3ec;border:1px solid #ffffff31;border-radius:11px;font-size:15px;padding:12px 13px;outline-offset:2px;min-height:44px}
+.bridge-key-row .bridge-small-btn{min-width:60px}
+.bridge-remember{display:flex;align-items:center;gap:10px;color:#ccdacc;font-size:13px;margin:16px 0 5px}
+.bridge-remember input{width:17px;height:17px;accent-color:var(--os-accent)}
+.bridge-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:20px 0 10px}
+.bridge-result{font-size:12px;min-height:18px;color:#bcd7c0;line-height:1.6;max-width:590px}
+.bridge-footnote{border-top:1px solid #ffffff18;padding-top:13px;margin-top:22px;color:#95b39d;font-size:11px;line-height:1.65}
+@media(max-width:720px){.bridge-settings{padding-top:22px;margin-top:24px}}
 </style>
 </head>
 <body><div class="shell">
 <aside class="rail" aria-label="Navigation"><div class="brand">H.</div><button class="nav active" data-page="home" aria-label="Home" title="Home">⌂</button><button class="nav" data-page="weather" aria-label="Weather" title="Weather"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.1"/><path d="M12 1.7v2.4m0 15.8v2.4M1.7 12h2.4m15.8 0h2.4M4.7 4.7l1.7 1.7m11.2 11.2 1.7 1.7M19.3 4.7l-1.7 1.7M6.4 17.6l-1.7 1.7"/></svg></button><button class="nav" data-page="lights" aria-label="Lighting" title="Lighting"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6m-5 4h4m-5-7.3a7 7 0 1 1 6 0c-.7.6-1 1.3-1 2.3H10c0-1-.3-1.7-1-2.3Z"/></svg></button><button class="nav" data-page="vehicle" aria-label="Vehicle" title="Vehicle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11 7 5.8A2 2 0 0 1 8.9 4.5h6.2A2 2 0 0 1 17 5.8L19 11M5 17v2.5M19 17v2.5M4 11h16a1 1 0 0 1 1 1v5H3v-5a1 1 0 0 1 1-1Zm2 3.2h2m8 0h2"/></svg></button><button class="nav" data-page="settings" aria-label="Settings" title="Settings"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.4 2.8h3.2l.5 2.2 1.9.8 1.9-1.2 2.3 2.3-1.2 1.9.8 1.9 2.2.5v3.2l-2.2.5-.8 1.9 1.2 1.9-2.3 2.3-1.9-1.2-1.9.8-.5 2.2h-3.2l-.5-2.2-1.9-.8-1.9 1.2-2.3-2.3 1.2-1.9-.8-1.9-2.2-.5v-3.2l2.2-.5.8-1.9-1.2-1.9 2.3-2.3 1.9 1.2 1.9-.8.5-2.2Z"/><circle cx="12" cy="12" r="3.1"/></svg></button></aside>
-<main class="main"><header class="top"><span><strong>HOME</strong> / VAGGERYD</span><div class="top-meta"><span id="topdate">MONDAY 19 OCTOBER</span><span class="version-label" aria-label="HOME OS version 0.17">v0.17</span></div></header>
+<main class="main"><header class="top"><span><strong>HOME</strong> / VAGGERYD</span><div class="top-meta"><span id="topdate">MONDAY 19 OCTOBER</span><span class="version-label" aria-label="HOME OS version 0.19">v0.19</span></div></header>
 <section id="home" class="page visible"><div class="dashboard">
 <article class="panel hero"><div class="hero-main"><div class="eyebrow">Good to be home</div><div class="clock" id="clock">13:18</div><div class="date" id="fulldate">Monday 19 October</div></div>
 <div class="outside"><div><div class="eyebrow" id="weather-eyebrow">Outside · Connecting…</div><div class="temp" id="current-temp">—°</div><div class="condition" id="current-condition">Loading weather</div></div><div class="weather-icon" id="current-icon" aria-hidden="true"><svg viewBox="0 0 140 110" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="87" cy="36" r="20" stroke="#e6e1c5" stroke-width="1.4"/><g stroke="#e6e1c5" stroke-width="1.4" stroke-linecap="round"><path d="M87 7V1M87 71v-6M58 36h-6M122 36h-6M66 15l-5-5M108 15l5-5"/></g><path d="M31 86h80c12 0 21-9 21-20 0-12-10-21-22-21-4 0-8 1-11 3-8-16-22-24-39-24-23 0-41 16-44 36C6 60 1 68 1 77c0 5 2 8 5 11" stroke="#e4eee0" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M35 98h72" stroke="#e4eee0" stroke-opacity=".35" stroke-width="1"/></svg></div></div></article>
 <article class="panel scenes"><div class="heading"><h2>Lighting moods</h2><span class="muted">PLEJD · DEMO</span></div><div class="scene-grid"><button class="scene" data-scene="Morning"><span class="scene-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.1"/><path d="M12 1.7v2.4m0 15.8v2.4M1.7 12h2.4m15.8 0h2.4M4.7 4.7l1.7 1.7m11.2 11.2 1.7 1.7M19.3 4.7l-1.7 1.7M6.4 17.6l-1.7 1.7"/></svg></span><span class="scene-name">Morning</span></button><button class="scene active" data-scene="Evening"><span class="scene-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.3"/><path d="M12 3.7v16.6"/><path d="M12 3.7a8.3 8.3 0 0 1 0 16.6Z" fill="currentColor" fill-opacity=".14" stroke="none"/></svg></span><span class="scene-name">Evening</span></button><button class="scene" data-scene="Cozy"><span class="scene-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5L12 2Z"/></svg></span><span class="scene-name">Cozy</span></button><button class="scene" data-scene="All off"><span class="scene-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 15.3A8.7 8.7 0 0 1 8.7 3.5 8.8 8.8 0 1 0 20.5 15.3Z"/></svg></span><span class="scene-name">All off</span></button></div><div class="status" id="scenestatus" aria-live="polite">Evening selected · Demo only</div></article>
-<article class="panel forecast"><div class="heading"><h2>Next few days</h2><a class="muted weather-source" id="forecast-source" href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer" title="Weather data by Open-Meteo">OPEN-METEO ↗</a></div><div class="forecast-plot"><svg id="forecast-chart" viewBox="0 0 1000 150" preserveAspectRatio="none" role="img" aria-label="Waiting for forecast"></svg></div>
+<article class="panel forecast"><div class="heading"><h2>Next few days</h2><details class="source-info" id="forecast-source"><summary title="Weather data source" aria-label="Weather data attribution"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8.1v.2"/></svg></summary><div class="source-popover">Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>. Temperatures are rounded and displayed in a custom forecast.</div></details></div><div class="forecast-plot"><svg id="forecast-chart" viewBox="0 0 1000 150" preserveAspectRatio="none" role="img" aria-label="Waiting for forecast"></svg></div>
 <div class="days" id="forecast-days" aria-live="polite"><div class="day"><span>—</span><span class="sym"></span><strong>—°</strong></div><div class="day"><span>—</span><span class="sym"></span><strong>—°</strong></div><div class="day"><span>—</span><span class="sym"></span><strong>—°</strong></div><div class="day"><span>—</span><span class="sym"></span><strong>—°</strong></div><div class="day"><span>—</span><span class="sym"></span><strong>—°</strong></div></div>
 </article>
-<article class="panel car"><div class="carhead"><h2>Polestar 2</h2><span class="muted">DEMO DATA</span></div><div class="car-center"><img class="car-graphic" src="assets/polestar-2-top.png" alt="Black Polestar 2 viewed from above"></div><div class="carbottom"><div class="percentage">68<span>%</span></div><div class="charge"><span class="charge-label">↯ &nbsp; Charging</span><div>7.4 kW · Demo</div></div></div><div class="bar"><div class="fill"></div></div></article>
+<article class="panel car"><div class="carhead"><h2>Polestar 2</h2><span class="muted" id="car-home-status">NOT CONNECTED</span></div><div class="car-center"><img class="car-graphic" src="assets/polestar-2-top.png" alt="Black Polestar 2 viewed from above"></div><div class="carbottom"><div class="percentage"><span id="home-soc">—</span><span>%</span></div><div class="charge"><span class="charge-label" id="home-charging-status">Connect in Settings</span><div id="home-charge-power">— kW</div></div></div><div class="bar"><div class="fill" id="home-battery-fill" style="width:0%"></div></div></article>
 </div></section>
 <section class="page" id="weather"><div class="detail weather-detail">
   <div class="eyebrow">HOME OS / WEATHER · VAGGERYD</div>
@@ -154,25 +175,14 @@ body{background:var(--os-root)}
     <div class="weather-metrics"><div><span>Feels like</span><strong id="weather-feels">—°</strong></div><div><span>Humidity</span><strong id="weather-humidity">—%</strong></div><div><span>Wind</span><strong id="weather-wind">— km/h</strong></div></div></div>
   <div class="weather-details-head"><h2>Next five days</h2><span class="weather-subtle">Daily highs & lows</span></div>
   <div class="weather-detail-days" id="weather-detail-days" aria-live="polite"><span class="weather-subtle">Waiting for forecast…</span></div>
-  <div class="weather-footer"><p>Forecast data by <a href="https://open-meteo.com/" rel="noopener noreferrer" target="_blank">Open-Meteo</a> · Automatically refreshes every 20 minutes.</p><button type="button" class="weather-refresh" id="weather-refresh">↻ Refresh weather</button></div>
+  <div class="weather-footer"><details class="source-info"><summary title="Weather data source" aria-label="Weather data attribution"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8.1v.2"/></svg></summary><div class="source-popover">Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>. Temperatures are rounded and displayed in a custom forecast.</div></details><button type="button" class="weather-refresh" id="weather-refresh">↻ Refresh weather</button></div>
   <button class="back" data-page="home">← Home</button>
 </div></section>
 <section class="page" id="lights"><div class="detail"><div class="eyebrow">HOME OS / LIGHTING</div><h1>Lighting</h1><p>Your four lighting moods can be selected from the home screen. They are currently simulated and do not control Plejd.</p><button class="back" data-page="home">← Home</button></div></section>
 <section class="page" id="vehicle"><div class="vehicle-page">
-<div class="vehicle-visual"><div class="eyebrow">HOME OS / VEHICLE</div><h1 class="vehicle-title">Polestar 2</h1><div class="vehicle-sub">Vehicle preview · Demo data</div><div class="vehicle-view-switch" role="group" aria-label="Choose vehicle view">
-  <button class="vehicle-view-option is-selected" type="button" id="vehicle-view-photo" aria-pressed="true">Top view</button>
-  <button class="vehicle-view-option" type="button" id="vehicle-view-3d" aria-pressed="false">Interactive 3D <span aria-hidden="true">↗</span></button>
-</div>
-<div class="vehicle-image-wrap vehicle-stage" id="vehicle-stage">
-  <img class="vehicle-image" id="vehicle-static-image" src="assets/polestar-2-top.png" alt="Black Polestar 2 from above">
-  <div id="vehicle-model-container" class="vehicle-model-container" hidden>
-    <div id="vehicle-model-status" class="vehicle-model-status" role="status" aria-live="polite">Preparing 3D viewer…</div>
-    <div class="vehicle-gesture-hint" id="vehicle-gesture-hint" hidden>Drag to rotate <span>·</span> Pinch to zoom</div>
-  </div>
-</div>
-<div class="vehicle-view-footnote" id="vehicle-view-footnote" aria-live="polite">Top-down render · Tap Interactive 3D to explore the model.</div>
-<div class="vehicle-model-credit" id="vehicle-model-credit" hidden>3D model by <a href="https://sketchfab.com/iori308408" target="_blank" rel="noopener noreferrer">Nieve5677</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a></div><div class="vehicle-stat-row"><div class="vehicle-soc">68<span>%</span></div><div class="vehicle-stat-label">CHARGING · DEMO<br>7.4 kW · Sample reading</div></div><div class="vehicle-track"><span></span></div><p class="vehicle-foot">Battery and charging information will become live once a supported integration is connected.</p><button class="back vehicle-back" data-page="home">← Home</button></div>
-<div class="vehicle-controls"><div class="vehicle-card"><div class="overline">CLIMATE / DEPARTURE</div><h2 style="margin-top:12px">Departure schedule</h2><div class="departure-time" id="departure-display">07:30</div><p>Set when you'd like the car ready. This is a local interface demo and does not update your Polestar.</p><div class="vehicle-form-row"><label for="departure-input">Departure time</label><input id="departure-input" type="time" value="07:30"></div><div class="weekdays" aria-label="Repeat on weekdays"><button class="weekday selected" data-weekday="M" aria-pressed="true">M</button><button class="weekday selected" data-weekday="Tu" aria-pressed="true">T</button><button class="weekday selected" data-weekday="W" aria-pressed="true">W</button><button class="weekday selected" data-weekday="Th" aria-pressed="true">T</button><button class="weekday selected" data-weekday="F" aria-pressed="true">F</button><button class="weekday" data-weekday="Sa" aria-pressed="false">S</button><button class="weekday" data-weekday="Su" aria-pressed="false">S</button></div><div class="vehicle-form-row"><input id="departure-enabled" type="checkbox" checked><label for="departure-enabled">Enable schedule (demo)</label></div><button class="vehicle-action" id="save-departure">Save demo schedule</button><div id="departure-message" class="vehicle-message" aria-live="polite"></div></div><div class="vehicle-card"><div class="overline">VEHICLE STATUS</div><h2 style="margin-top:12px">Charging overview</h2><div class="vehicle-stat-row"><span class="vehicle-foot">Battery</span><strong>68%</strong></div><div class="vehicle-stat-row" style="margin-top:15px"><span class="vehicle-foot">Charging power</span><strong>7.4 kW</strong></div><div class="vehicle-stat-row" style="margin-top:15px"><span class="vehicle-foot">Status</span><strong>Charging</strong></div><p class="vehicle-foot">Illustrative values only · Not connected to your car.</p></div></div>
+<div class="vehicle-visual"><div class="eyebrow">HOME OS / VEHICLE</div><h1 class="vehicle-title">Polestar 2</h1><div class="vehicle-sub" id="vehicle-subtitle">Connect your car in Settings</div><div class="vehicle-image-wrap vehicle-stage" id="vehicle-stage"><img class="vehicle-image" src="assets/polestar-2-top.png" alt="Black Polestar 2 from above"></div>
+<div class="vehicle-stat-row"><div class="vehicle-soc"><span id="vehicle-soc">—</span><span>%</span></div><div class="vehicle-stat-label"><span id="vehicle-main-status">NOT CONNECTED</span><br><span id="vehicle-main-power">— kW</span></div></div><div class="vehicle-track"><span id="vehicle-battery-fill" style="width:0%"></span></div><p class="vehicle-foot" id="vehicle-data-age" aria-live="polite">Connect the bridge in Settings to see your car's status.</p><div class="vehicle-status-actions"><button class="vehicle-refresh" type="button" id="polestar-refresh">↻ Refresh vehicle</button><button class="vehicle-settings-link" type="button" data-page="settings">Connection settings ↗</button></div><button class="back vehicle-back" data-page="home">← Home</button></div>
+<div class="vehicle-controls"><div class="vehicle-card"><div class="overline">CLIMATE / DEPARTURE</div><h2 style="margin-top:12px">Departure schedule</h2><div class="departure-time" id="departure-display">07:30</div><p>Set when you'd like the car ready. This is a local interface demo and does not update your Polestar.</p><div class="vehicle-form-row"><label for="departure-input">Departure time</label><input id="departure-input" type="time" value="07:30"></div><div class="weekdays" aria-label="Repeat on weekdays"><button class="weekday selected" data-weekday="M" aria-pressed="true">M</button><button class="weekday selected" data-weekday="Tu" aria-pressed="true">T</button><button class="weekday selected" data-weekday="W" aria-pressed="true">W</button><button class="weekday selected" data-weekday="Th" aria-pressed="true">T</button><button class="weekday selected" data-weekday="F" aria-pressed="true">F</button><button class="weekday" data-weekday="Sa" aria-pressed="false">S</button><button class="weekday" data-weekday="Su" aria-pressed="false">S</button></div><div class="vehicle-form-row"><input id="departure-enabled" type="checkbox" checked><label for="departure-enabled">Enable schedule (demo)</label></div><button class="vehicle-action" id="save-departure">Save demo schedule</button><div id="departure-message" class="vehicle-message" aria-live="polite"></div></div><div class="vehicle-card"><div class="overline">VEHICLE STATUS</div><h2 style="margin-top:12px">Charging overview</h2><div class="vehicle-stat-row"><span class="vehicle-foot">Battery</span><strong id="vehicle-battery-detail">—</strong></div><div class="vehicle-stat-row" style="margin-top:15px"><span class="vehicle-foot">Estimated range</span><strong id="vehicle-range-detail">—</strong></div><div class="vehicle-stat-row" style="margin-top:15px"><span class="vehicle-foot">Charging power</span><strong id="vehicle-power-detail">—</strong></div><div class="vehicle-stat-row" style="margin-top:15px"><span class="vehicle-foot">Status</span><strong id="vehicle-status-detail">Not connected</strong></div><p class="vehicle-foot" id="vehicle-updated-detail" aria-live="polite">Read-only information from Polestar Cloud.</p></div></div>
 </div></section>
 <section class="page" id="settings"><div class="detail settings-panel">
 <div class="eyebrow">HOME OS / SETTINGS</div><h1>Appearance</h1>
@@ -200,6 +210,18 @@ body{background:var(--os-root)}
   </div>
 </div>
 <div class="settings-footer"><button type="button" class="reset-theme" id="reset-appearance">Reset to original green</button><span class="theme-chip"><span class="theme-dot" aria-hidden="true"></span>Live preview · Saved locally</span></div>
+<section class="bridge-settings" aria-labelledby="bridge-title">
+  <div class="bridge-top"><div><div class="eyebrow">CONNECTED SERVICES</div><h2 id="bridge-title">Polestar Cloud</h2></div><span class="bridge-state" id="polestar-settings-state" role="status">Not connected</span></div>
+  <p class="bridge-description">Link your read-only Polestar bridge to HOME OS. Enter the <strong>HOME_OS_API_KEY</strong> you created in Render — never your Polestar password.</p>
+  <label for="polestar-key" class="bridge-label">Bridge API key</label>
+  <div class="bridge-key-row"><input type="password" id="polestar-key" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Paste key from Render" aria-describedby="polestar-key-note"><button type="button" id="polestar-toggle-key" class="bridge-small-btn" aria-label="Show API key">Show</button></div>
+  <label class="bridge-remember"><input type="checkbox" id="polestar-remember" checked><span>Remember on this device</span></label>
+  <div class="theme-hint" id="polestar-key-note">Saved only in this browser's storage, not in your GitHub files. Use only on your private tablet or PC. Uncheck to keep the key only for this browser tab.</div>
+  <div class="bridge-actions"><button type="button" class="vehicle-action" id="polestar-connect">Connect & test</button><button type="button" class="bridge-small-btn" id="polestar-disconnect">Forget connection</button></div>
+  <p class="bridge-result" id="polestar-test-result" role="status" aria-live="polite">No key entered yet.</p>
+  <div class="bridge-footnote">Cloud bridge · Render · Read-only vehicle data. Updates automatically about every 5 minutes while HOME OS is open. First connection may take a minute if Render is sleeping. Departure schedule remains a demo.</div>
+</section>
+<div class="weather-credits">Sources · Weather data: <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a> (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>). Car reference model: <a href="https://sketchfab.com/iori308408" target="_blank" rel="noopener noreferrer">Nieve5677</a> (CC BY 4.0).</div>
 <div style="margin-top:22px"><button class="back" data-page="home">← Home</button></div>
 </div></section>
 </main></div>
@@ -417,92 +439,232 @@ document.getElementById('save-departure').addEventListener('click',function(){if
 </script>
 
 <script>
-/* HOME OS v0.17: only fetch and initialize 3D when the user explicitly chooses it.
-   Photo mode and all other tabs work without model-viewer or a WebGL-capable device. */
-(function(){
+/* v0.19 — Polestar bridge. Never commit API keys to this public HTML. */
+(function () {
   'use strict';
-  var photoBtn=document.getElementById('vehicle-view-photo');
-  var modelBtn=document.getElementById('vehicle-view-3d');
-  var photo=document.getElementById('vehicle-static-image');
-  var container=document.getElementById('vehicle-model-container');
-  var status=document.getElementById('vehicle-model-status');
-  var hint=document.getElementById('vehicle-gesture-hint');
-  var foot=document.getElementById('vehicle-view-footnote');
-  var credit=document.getElementById('vehicle-model-credit');
-  var viewer=null,started=false,failed=false;
-  var componentPromise=null;
-  function setStatus(title,small,isError){
-    status.classList.toggle('is-error',!!isError);
-    status.textContent=title;
-    if(small){var el=document.createElement('small');el.textContent=small;status.appendChild(el);}
-    status.hidden=false;
+  var API_URL = 'https://home-os-polestar-bridge.onrender.com/api/vehicle';
+  var KEY_STORAGE = 'homeos-polestar-api-key-v19';
+  var CAR_STORAGE = 'homeos-polestar-last-reading-v19';
+  var POLL_MS = 5 * 60 * 1000;
+  var MAX_CACHE_AGE_MS = 24 * 60 * 60 * 1000;
+  var el = function (id) { return document.getElementById(id); };
+  var activeKey = '';
+  var loading = false;
+  var lastPoll = 0;
+  var current = null;
+  var control = null;
+
+  function readKey() {
+    try { return sessionStorage.getItem(KEY_STORAGE) || localStorage.getItem(KEY_STORAGE) || ''; }
+    catch (e) { return activeKey; }
   }
-  function activate(which){
-    var three=(which==='3d');
-    photoBtn.classList.toggle('is-selected',!three);
-    modelBtn.classList.toggle('is-selected',three);
-    photoBtn.setAttribute('aria-pressed',String(!three));
-    modelBtn.setAttribute('aria-pressed',String(three));
-    photo.hidden=three;
-    container.hidden=!three;
-    foot.textContent=three?'Interactive 3D · Model loads only when requested.':'Top-down render · Tap Interactive 3D to explore the model.';
-    credit.hidden=!three;
-    if(three && !started && !failed) start();
+  function retainKey(key) {
+    activeKey = key;
+    try {
+      localStorage.removeItem(KEY_STORAGE);
+      sessionStorage.removeItem(KEY_STORAGE);
+      if (el('polestar-remember').checked) localStorage.setItem(KEY_STORAGE, key);
+      else sessionStorage.setItem(KEY_STORAGE, key);
+    } catch (e) { /* key remains in memory if storage is disabled */ }
   }
-  photoBtn.addEventListener('click',function(){activate('photo');});
-  modelBtn.addEventListener('click',function(){activate('3d');});
-  function getComponent(){
-    if(window.customElements && customElements.get('model-viewer'))return Promise.resolve();
-    if(componentPromise)return componentPromise;
-    componentPromise=new Promise(function(resolve,reject){
-      if(!window.customElements){reject(new Error('This browser is too old for the 3D viewer.'));return;}
-      var script=document.createElement('script');
-      script.type='module';
-      script.src='https://ajax.googleapis.com/ajax/libs/model-viewer/4.4.0/model-viewer.min.js';
-      script.onerror=function(){reject(new Error('Could not load the 3D viewer library. Check the internet connection.'));};
-      document.head.appendChild(script);
-      var done=false;
-      customElements.whenDefined('model-viewer').then(function(){done=true;resolve();});
-      window.setTimeout(function(){if(!done)reject(new Error('3D viewer timed out. The tablet or browser may not support it.'));},18000);
-    });
-    return componentPromise;
+  function forgetKey() {
+    activeKey = '';
+    try {
+      localStorage.removeItem(KEY_STORAGE);
+      sessionStorage.removeItem(KEY_STORAGE);
+      localStorage.removeItem(CAR_STORAGE);
+    } catch (e) {}
   }
-  function onError(e){
-    failed=true;
-    var extra=e && e.detail && e.detail.type ? ' ('+e.detail.type+')' : '';
-    setStatus('Could not display the 3D model'+extra,'Use Top view instead, or try another browser.',true);
-    foot.textContent='3D unavailable · Top view remains available.';
+  function num(v) { if (v === null || v === undefined || v === '') return NaN; return Number(v); }
+  function text(id, value) { var node = el(id); if (node) node.textContent = value; }
+  function statusName(value) {
+    var k = String(value || '').trim().toLowerCase();
+    if (k === 'done' || k === 'completed' || k === 'complete' || k === 'finished') return 'Charging complete';
+    if (k.indexOf('charg') >= 0 && k.indexOf('not ') === -1 && k.indexOf('discharg') === -1) return 'Charging';
+    if (k.indexOf('disconnect') >= 0 || k.indexOf('unplug') >= 0) return 'Unplugged';
+    if (k.indexOf('not charging') >= 0 || k.indexOf('idle') >= 0 || k.indexOf('stop') >= 0) return 'Not charging';
+    return k ? k.charAt(0).toUpperCase() + k.slice(1) : 'Unknown';
   }
-  function start(){
-    started=true;
-    setStatus('Loading 3D viewer…','The model is about 36 MB and may take a while on the tablet.');
-    if(!window.WebGLRenderingContext){onError();return;}
-    getComponent().then(function(){
-      var el=document.createElement('model-viewer');
-      el.id='polestar-model';
-      el.setAttribute('src','assets/polestar-2-optimized.glb');
-      el.setAttribute('alt','Interactive 3D model of a black Polestar 2');
-      el.setAttribute('camera-controls','');
-      el.setAttribute('touch-action','pan-y');
-      el.setAttribute('shadow-intensity','0.5');
-      el.setAttribute('environment-image','neutral');
-      el.setAttribute('tone-mapping','aces');
-      el.setAttribute('exposure','1.1');
-      el.setAttribute('camera-orbit','45deg 72deg auto');
-      el.setAttribute('field-of-view','35deg');
-      el.setAttribute('interaction-prompt','none');
-      el.setAttribute('loading','eager');
-      el.addEventListener('progress',function(e){
-        if(!status.hidden && e.detail && typeof e.detail.totalProgress==='number'){
-          var pc=Math.round(e.detail.totalProgress*100);
-          if(pc<100)setStatus('Loading 3D model · '+pc+'%','Drag to rotate once it finishes loading.');
-        }
-      });
-      el.addEventListener('load',function(){status.hidden=true;hint.hidden=false;foot.textContent='Drag to rotate · Pinch or scroll to zoom.';});
-      el.addEventListener('error',onError);
-      viewer=el;container.appendChild(el);
-    }).catch(function(e){failed=true;setStatus(e.message||'3D viewer unavailable','Switch back to Top view if needed.',true);});
+  function percent(p) { var n = num(p); return Number.isFinite(n) && n >= 0 && n <= 100 ? Math.round(n) : null; }
+  function dateMs(data) { var ms = Date.parse(data && data.updated_at); return Number.isFinite(ms) ? ms : NaN; }
+  function ageLabel(ms) {
+    if (!Number.isFinite(ms)) return 'Time unknown';
+    var minutes = Math.max(0, Math.round((Date.now() - ms)/60000));
+    if (minutes < 2) return 'just now';
+    if (minutes < 60) return minutes + ' min ago';
+    if (minutes < 1440) return Math.floor(minutes/60) + ' h ago';
+    return Math.floor(minutes/1440) + ' days ago';
   }
+  function setDisconnected(note) {
+    current = null;
+    text('car-home-status', 'NOT CONNECTED');
+    text('home-soc', '—');
+    text('home-charging-status', 'Connect in Settings');
+    text('home-charge-power', '— kW');
+    el('home-battery-fill').style.width = '0%';
+    text('vehicle-subtitle', 'Connect your car in Settings');
+    text('vehicle-soc', '—');
+    text('vehicle-main-status', 'NOT CONNECTED');
+    text('vehicle-main-power', '— kW');
+    text('vehicle-data-age', note || 'Connect the bridge in Settings to see your car status.');
+    el('vehicle-battery-fill').style.width = '0%';
+    text('vehicle-battery-detail', '—');
+    text('vehicle-range-detail', '—');
+    text('vehicle-power-detail', '—');
+    text('vehicle-status-detail', 'Not connected');
+    text('vehicle-updated-detail', 'Read-only information from Polestar Cloud.');
+    text('polestar-settings-state', 'Not connected');
+  }
+  function displayVehicle(data, flag) {
+    var p = percent(data.soc_percent);
+    if (p === null) throw Error('Battery level missing from response');
+    var charge = statusName(data.charging_status);
+    var powerN = num(data.charging_power_kw);
+    var power = Number.isFinite(powerN) && powerN >= 0 ? powerN.toFixed(1) + ' kW' : '— kW';
+    var rangeN = num(data.range_km);
+    var range = Number.isFinite(rangeN) && rangeN >= 0 ? Math.round(rangeN) + ' km' : '—';
+    var ts = dateMs(data);
+    var fallback = flag === 'local' || data.stale === true;
+    var delayed = Number.isFinite(ts) && Date.now()-ts > 20*60*1000;
+    var old = fallback || delayed;
+    var tag = fallback ? 'CACHED DATA' : (delayed ? 'OLDER READING' : 'CONNECTED');
+    var update = 'Updated ' + ageLabel(ts);
+    current = data;
+    text('car-home-status', tag);
+    text('home-soc', String(p));
+    text('home-charging-status', charge);
+    text('home-charge-power', power + ' · ' + range);
+    el('home-battery-fill').style.width = p + '%';
+    text('vehicle-subtitle', (old ? 'Last available reading' : 'Connected to Polestar Cloud') + ' · Read-only');
+    text('vehicle-soc', String(p));
+    text('vehicle-main-status', charge.toUpperCase() + (old ? ' · CACHED' : ''));
+    text('vehicle-main-power', power + ' · ' + range);
+    el('vehicle-battery-fill').style.width = p + '%';
+    text('vehicle-data-age', (old ? 'Cached · ' : '') + update + (data.plugged_in ? ' · Plugged in' : ' · Unplugged'));
+    text('vehicle-battery-detail', p + '%');
+    text('vehicle-range-detail', range);
+    text('vehicle-power-detail', power);
+    text('vehicle-status-detail', charge);
+    text('vehicle-updated-detail', (old ? 'Cached reading · ' : 'Polestar Cloud · ') + update);
+    text('polestar-settings-state', old ? 'Cached' : 'Connected');
+  }
+  function storeCar(data) {
+    try { localStorage.setItem(CAR_STORAGE, JSON.stringify(data)); } catch (e) {}
+  }
+  function cachedCar() {
+    try {
+      var d = JSON.parse(localStorage.getItem(CAR_STORAGE) || 'null');
+      var ts = dateMs(d);
+      if (d && Number.isFinite(ts) && (Date.now() - ts) <= MAX_CACHE_AGE_MS) return d;
+    } catch (e) {}
+    return null;
+  }
+  function startUI() {
+    var key = readKey();
+    activeKey = key;
+    if (!key) { setDisconnected(); return; }
+    el('polestar-key').placeholder = 'Key saved on this device (hidden)';
+    el('polestar-remember').checked = (function(){ try {return !!localStorage.getItem(KEY_STORAGE);}catch(e){return false;} })();
+    var cache = cachedCar();
+    if (cache) displayVehicle(cache, 'local');
+    text('polestar-test-result', 'Saved key found. Connecting to your Polestar…');
+    refreshCar(false);
+  }
+  function showError(err) {
+    var message = err.message || 'Could not connect';
+    var cache = cachedCar();
+    if (cache) {
+      displayVehicle(cache, 'local');
+      text('polestar-test-result', message + ' · Showing the last saved reading.');
+      return;
+    }
+    if (current) {
+      displayVehicle(current, 'local');
+      text('polestar-test-result', message + ' · Showing the previous reading.');
+      return;
+    }
+    text('car-home-status', 'UNAVAILABLE');
+    text('vehicle-main-status', 'UNAVAILABLE');
+    text('vehicle-subtitle', 'Bridge temporarily unavailable');
+    text('vehicle-data-age', message);
+    text('polestar-settings-state', 'Unavailable');
+    text('polestar-test-result', message);
+  }
+  function request(key) {
+    control = typeof AbortController !== 'undefined' ? new AbortController() : null;
+    var timer = setTimeout(function(){if(control) control.abort();}, 115000);
+    return fetch(API_URL, {
+      method:'GET', mode:'cors', cache:'no-store',
+      headers:{ 'Authorization':'Bearer ' + key },
+      signal:control ? control.signal : undefined
+    }).then(function(resp){
+      if (resp.status===401) throw Error('Invalid API key. Check HOME_OS_API_KEY in Render.');
+      if (resp.status===503) throw Error('Polestar bridge is reachable but vehicle data is unavailable (503).');
+      if (!resp.ok) throw Error('Bridge error (HTTP ' + resp.status + ').');
+      return resp.json();
+    }).then(function(d){
+      if (!d || percent(d.soc_percent) === null) throw Error('Unexpected response from bridge.');
+      return d;
+    }).catch(function(err){
+      if (err && err.name === 'AbortError') throw Error('Connection timed out. Render may be waking up.');
+      if (err && err.name === 'TypeError') throw Error('Network/CORS error. Check Render is live and ALLOWED_ORIGIN is https://pm-ohlsson.github.io.');
+      throw err;
+    }).finally(function(){clearTimeout(timer);control=null;});
+  }
+  function refreshCar(force) {
+    if (loading) return Promise.resolve(null);
+    var key = activeKey || readKey();
+    if (!key) { setDisconnected(); text('polestar-test-result','Enter your API key in Settings to connect.'); return Promise.resolve(null); }
+    if (!force && Date.now() - lastPoll < POLL_MS) return Promise.resolve(current);
+    loading = true;
+    lastPoll = Date.now();
+    el('polestar-refresh').disabled = true;
+    text('polestar-test-result', 'Connecting to Polestar bridge…');
+    return request(key).then(function(d){
+      displayVehicle(d, 'bridge');
+      storeCar(d);
+      text('polestar-test-result', 'Connected · ' + (d.stale ? 'Bridge returned cached data' : 'Data received') + ' · Updated ' + ageLabel(dateMs(d)) + '.');
+      return d;
+    }).catch(function(err){ showError(err); return null; })
+      .finally(function(){loading=false;el('polestar-refresh').disabled=false;});
+  }
+  el('polestar-connect').addEventListener('click',function(){
+    if (loading) return;
+    var inputKey=el('polestar-key').value.trim();
+    var key=inputKey || activeKey || readKey();
+    if (!key) {text('polestar-test-result','Paste HOME_OS_API_KEY from Render first.');return;}
+    el('polestar-connect').disabled=true;
+    text('polestar-test-result', 'Testing connection… This may take a minute.');
+    request(key).then(function(d){
+      retainKey(key);
+      el('polestar-key').value='';
+      el('polestar-key').placeholder='Key saved on this device (hidden)';
+      displayVehicle(d,'bridge');
+      storeCar(d);
+      lastPoll=Date.now();
+      text('polestar-test-result','Connected successfully! Battery ' + percent(d.soc_percent) + '% · ' + (d.stale?'Cached reading':'Polestar Cloud data') + '.');
+    }).catch(function(err){text('polestar-test-result','Connection failed: ' + (err.message||'Unknown error') + '. Key not changed.');})
+      .finally(function(){el('polestar-connect').disabled=false;});
+  });
+  el('polestar-disconnect').addEventListener('click',function(){
+    forgetKey();
+    el('polestar-key').value='';
+    el('polestar-key').placeholder='Paste key from Render';
+    setDisconnected();
+    text('polestar-test-result', 'Connection forgotten on this device.');
+  });
+  el('polestar-toggle-key').addEventListener('click',function(){
+    var inp=el('polestar-key');
+    var show=inp.type==='password';
+    inp.type=show?'text':'password';
+    el('polestar-toggle-key').textContent=show?'Hide':'Show';
+    el('polestar-toggle-key').setAttribute('aria-label', show?'Hide API key':'Show API key');
+  });
+  el('polestar-refresh').addEventListener('click',function(){refreshCar(true);});
+  document.addEventListener('visibilitychange',function(){if(!document.hidden) refreshCar(false);});
+  window.addEventListener('online',function(){refreshCar(true);});
+  startUI();
+  setInterval(function(){if(!document.hidden) refreshCar(false);}, POLL_MS);
 })();
 </script>
 
