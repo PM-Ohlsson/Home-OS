@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 430" role="img" aria-label="Stylized top view of a black Polestar 2">
+<defs><linearGradient id="body" x1="0" x2="1"><stop stop-color="#080d0d"/><stop offset=".17" stop-color="#26312f"/><stop offset=".49" stop-color="#090f10"/><stop offset=".83" stop-color="#26302e"/><stop offset="1" stop-color="#080d0d"/></linearGradient><linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#263432"/><stop offset="1" stop-color="#090f10"/></linearGradient><filter id="shadow" x="-30%" y="-20%" width="160%" height="150%"><feGaussianBlur stdDeviation="9"/></filter></defs>
+<ellipse cx="115" cy="223" rx="82" ry="201" fill="#000" opacity=".35" filter="url(#shadow)"/>
+<rect x="15" y="99" width="23" height="75" rx="9" fill="#070b0b" stroke="#49534e" stroke-width="2"/><rect x="192" y="99" width="23" height="75" rx="9" fill="#070b0b" stroke="#49534e" stroke-width="2"/><rect x="15" y="264" width="23" height="75" rx="9" fill="#070b0b" stroke="#49534e" stroke-width="2"/><rect x="192" y="264" width="23" height="75" rx="9" fill="#070b0b" stroke="#49534e" stroke-width="2"/>
+<path d="M72 16 Q115 3 158 16 Q185 29 190 68 L196 121 L192 318 Q189 383 164 410 Q115 424 66 410 Q41 383 38 318 L34 121 L40 68 Q45 29 72 16Z" fill="url(#body)" stroke="#64736b" stroke-width="2"/>
+<path d="M62 43 Q115 24 168 43 L176 101 Q115 113 54 101Z" fill="#121c1c" stroke="#5d6c63" stroke-width="1.2"/>
+<path d="M58 135 Q115 115 172 135 L174 277 Q115 292 56 277Z" fill="url(#glass)" stroke="#5b6c65" stroke-width="1.4"/>
+<path d="M57 150 Q115 141 173 150 M58 263 Q115 274 172 263" stroke="#76837b" opacity=".55" fill="none"/>
+<path d="M65 311 Q115 323 165 311 L174 376 Q115 391 56 376Z" fill="#111919" stroke="#46554e" stroke-width="1"/>
+<path d="M56 69 Q115 55 174 69 M57 373 Q115 392 173 373" stroke="#849087" stroke-opacity=".28" fill="none"/>
+<path d="M48 392 L81 401 M149 401 L182 392" stroke="#bc3d36" stroke-width="5" stroke-linecap="round"/><path d="M65 31 L85 25 M145 25 L165 31" stroke="#d7ded6" stroke-width="4" stroke-linecap="round" opacity=".7"/>
+<path d="M106 90 L115 83 L124 90 L115 97Z" fill="none" stroke="#d0d9ce" stroke-width="1.2" opacity=".8"/>
+</svg>
