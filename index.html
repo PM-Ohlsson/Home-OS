@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080e0c">
-<title>HOME OS — v0.14</title>
+<title>HOME OS — v0.17</title>
 <style>
 :root{--os-root:#080e0c;--os-accent:#d7e5d2;--os-hero-a:#284337;--os-hero-b:#1c3229;--os-hero-c:#14251e;--os-hero-d:#102019;--os-scenes-a:#192b22;--os-scenes-b:#15251e;--os-scene:#24382d;--os-scene-hover:#304638;--os-forecast-a:#172920;--os-forecast-b:#192a23;--os-forecast-c:#14241d;--os-car-a:#2b3c32;--os-car-b:#1b2b23;--os-car-c:#17271f;--os-bar:#3c5042;--os-fill:#cce2c5;--os-detail:#172920;--os-vehicle-a:#284036;--os-vehicle-b:#15251e;--os-vehicle-c:#101d17;--os-track:#415648;--os-weekday:#2b4033;--os-time:#293e31;--os-demo-color:#446957;font-family:Inter,"Segoe UI",Arial,sans-serif;color:#edf3ec;background:var(--os-root);--grain-opacity:0;--text:#edf3ec;--muted:#a5b9aa;--line:#ffffff16;--card:#15251e}
 *{box-sizing:border-box}body{margin:0}button{font:inherit;cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid #d4e5cf;outline-offset:3px}
 .shell{display:grid;grid-template-columns:64px minmax(0,1fr);min-height:100vh}.rail{border-right:1px solid var(--line);display:flex;flex-direction:column;align-items:center;gap:15px;padding:24px 7px}.brand{font-size:21px;letter-spacing:-2px;font-weight:700;margin-bottom:25px}.nav{border:0;background:transparent;color:#91a69a;width:46px;height:46px;border-radius:14px;font-size:22px}.nav.active{background:var(--os-accent);color:#14231b}.nav:last-child{margin-top:auto}
 .main{padding:22px 27px 26px;width:100%;max-width:1750px;margin:0 auto;min-width:0}.top{height:28px;display:flex;align-items:center;justify-content:space-between;margin-bottom:15px;color:#a5b9aa;letter-spacing:2px;text-transform:uppercase;font-size:11px}.top strong{color:#e4efe3;font-weight:600}
 .dashboard{display:grid;grid-template-columns:minmax(0,1.82fr) minmax(290px,1fr);grid-template-rows:minmax(385px,1.68fr) minmax(240px,.96fr);gap:15px;height:calc(100vh - 92px);min-height:635px}.panel{border-radius:23px;position:relative;overflow:hidden;border:1px solid var(--line)}.panel:after{content:"";position:absolute;inset:0;background:url('assets/grain.png') repeat;opacity:var(--grain-opacity);pointer-events:none;z-index:5}
-.hero{padding:33px 35px 30px;display:flex;flex-direction:column;justify-content:space-between;isolation:isolate;background:radial-gradient(ellipse at 75% 58%,var(--os-hero-a) 0%,var(--os-hero-b) 36%,var(--os-hero-c) 72%,var(--os-hero-d) 100%)}.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 79% 77%,#9cb29c12,transparent 52%);pointer-events:none}.hero-main,.outside{position:relative;z-index:1}.eyebrow{font-size:11px;letter-spacing:2.2px;text-transform:uppercase;color:#a8bdad}.clock{font-weight:200;font-size:clamp(104px,12.7vw,205px);line-height:1.04;letter-spacing:-.095em;font-variant-numeric:tabular-nums;margin:12px 0 0 -7px;white-space:nowrap}.date{font-size:clamp(19px,2vw,27px);font-weight:300;color:#d6e3d8;margin-top:8px}.outside{display:flex;align-items:flex-end;gap:28px}.temp{font-size:clamp(69px,7.4vw,108px);line-height:1;letter-spacing:-.075em;font-weight:200;margin-top:11px}.condition{color:#c9d9cb;font-size:16px;margin-top:8px}.weather-icon{width:125px;height:105px;flex:none;opacity:.9;align-self:end}.weather-icon svg{width:100%;height:100%}
+.hero{padding:33px 35px 30px;display:flex;flex-direction:column;justify-content:space-between;isolation:isolate;background:radial-gradient(ellipse at 75% 58%,var(--os-hero-a) 0%,var(--os-hero-b) 36%,var(--os-hero-c) 72%,var(--os-hero-d) 100%)}.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 79% 77%,#9cb29c12,transparent 52%);pointer-events:none}.hero-main,.outside{position:relative;z-index:1}.eyebrow{font-size:11px;letter-spacing:2.2px;text-transform:uppercase;color:#a8bdad}.clock{font-weight:200;font-size:clamp(104px,12.7vw,205px);line-height:1.04;letter-spacing:-.055em;font-variant-numeric:tabular-nums;margin:12px 0 0 -7px;white-space:nowrap}.date{font-size:clamp(19px,2vw,27px);font-weight:300;color:#d6e3d8;margin-top:8px}.outside{display:flex;align-items:flex-end;gap:28px}.temp{font-size:clamp(69px,7.4vw,108px);line-height:1;letter-spacing:-.075em;font-weight:200;margin-top:11px}.condition{color:#c9d9cb;font-size:16px;margin-top:8px}.weather-icon{width:125px;height:105px;flex:none;opacity:.9;align-self:end}.weather-icon svg{width:100%;height:100%}
 .scenes{padding:25px;background:linear-gradient(145deg,var(--os-scenes-a),var(--os-scenes-b) 80%);display:flex;flex-direction:column;gap:17px}.heading{display:flex;align-items:center;justify-content:space-between;gap:10px}.heading h2{font-size:18px;font-weight:550;margin:0}.muted{font-size:10px;letter-spacing:.5px;color:#a0b3a5}.scene-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:11px;flex:1}.scene{border:1px solid #ffffff13;border-radius:17px;padding:16px;background:var(--os-scene);color:#e0e9df;display:flex;flex-direction:column;justify-content:space-between;text-align:left;position:relative;min-height:90px;transition:background .2s,color .2s}.scene:hover{background:var(--os-scene-hover)}.scene.active,.scene.active:hover{background:var(--os-accent);color:#1c3024}.scene-icon{font-size:26px;font-weight:300;line-height:1}.scene-name{font-size:15px}.scene.active:after{content:"✓";position:absolute;right:16px;top:13px;font-size:16px}.status{font-size:11px;color:#b1c5b6;min-height:13px}
 .forecast{padding:25px 27px 21px;background:linear-gradient(120deg,var(--os-forecast-a),var(--os-forecast-b) 65%,var(--os-forecast-c));display:flex;flex-direction:column;gap:10px}.forecast-plot{flex:1;min-height:70px;position:relative}.forecast-plot svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}.days{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0}.day{display:flex;flex-direction:column;align-items:center;gap:9px;color:#bacbbb;font-size:12px}.day .sym{font-size:22px;color:#dce7db}.day strong{font-size:16px;color:#eef4eb;font-weight:500}
 .car{padding:25px 27px 25px;background:radial-gradient(ellipse at 50% 55%,var(--os-car-a) 0%,var(--os-car-b) 55%,var(--os-car-c) 100%);display:flex;flex-direction:column;gap:5px}.carhead{display:flex;justify-content:space-between;align-items:center}.carhead h2{font-size:18px;font-weight:550;margin:0}.car-center{position:absolute;inset:0;pointer-events:none;z-index:1}.car-graphic{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);height:64%;max-height:240px;width:auto;max-width:58%;object-fit:contain;filter:drop-shadow(0 8px 10px #0007)}.carhead{position:relative;z-index:2}.carbottom{position:relative;z-index:2;display:flex;align-items:end;justify-content:space-between;gap:10px;margin-top:auto;margin-bottom:13px}.car>.bar{position:relative;z-index:2}.percentage{font-size:clamp(46px,5vw,73px);font-weight:200;line-height:1;letter-spacing:-.07em}.percentage span{font-size:.42em}.charge{text-align:right;font-size:12px;line-height:1.7;color:#b7cbb9}.charge-label{font-size:10px;letter-spacing:1.2px;text-transform:uppercase}.bar{height:7px;border-radius:8px;background:var(--os-bar);overflow:hidden}.fill{height:100%;width:68%;border-radius:8px;background:var(--os-fill)}
@@ -66,6 +66,7 @@ body{background:var(--os-root)}
 .theme-range::-moz-range-thumb{width:14px;height:14px;border-radius:50%;border:3px solid #e4eee2;background:#23352b;box-shadow:0 2px 8px #0009;cursor:pointer}
 #hue{background:linear-gradient(90deg,hsl(0,53%,46%),hsl(60,53%,46%),hsl(120,53%,46%),hsl(180,53%,46%),hsl(240,53%,46%),hsl(300,53%,46%),hsl(360,53%,46%))}
 #saturation{background:linear-gradient(90deg,#555c58,var(--os-demo-color))}
+#brightness{background:linear-gradient(90deg,#070b09,#2a4134,#7b9685)}
 #grain{background:linear-gradient(90deg,#2c3a32,#92ab98)}
 .theme-hint{font-size:11px;color:#95ad9c;line-height:1.6;margin-top:10px}
 .settings-footer{display:flex;gap:15px;align-items:center;justify-content:space-between;flex-wrap:wrap;border-top:1px solid #ffffff17;padding-top:22px}
@@ -74,27 +75,108 @@ body{background:var(--os-root)}
 .theme-chip{display:flex;gap:9px;align-items:center;font-size:11px;color:#a1b8a6}
 .theme-dot{width:17px;height:17px;border-radius:50%;background:var(--os-demo-color);border:1px solid #ffffff55}
 @media(max-width:720px){.settings-panel{padding:25px 21px}.theme-controls{max-width:none}}
+
+/* v0.16 — Weather integration (Open-Meteo) */
+.weather-source{text-decoration:none;letter-spacing:.7px;white-space:nowrap}
+.weather-source:hover,.weather-footer a:hover{text-decoration:underline}
+.weather-detail{padding:34px 38px;min-height:calc(100vh - 110px)}
+.weather-title-row{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.weather-title-row h1{margin:17px 0 25px}
+.weather-status{font-size:11px;letter-spacing:.7px;color:#b6c9b9;line-height:1.5}
+.weather-now{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,.8fr);gap:24px;align-items:center;padding:21px 0 25px;border-bottom:1px solid var(--line)}
+.weather-now-main{display:flex;align-items:center;gap:20px;min-width:0}
+.weather-now-icon{width:118px;height:118px;flex:none;display:flex;align-items:center;justify-content:center;color:#dceadd}
+.weather-now-icon svg{height:100%;width:100%}
+.weather-now-temp{font-weight:200;font-size:clamp(75px,8vw,116px);line-height:1;letter-spacing:-.055em;font-variant-numeric:tabular-nums}
+.weather-now-condition{font-size:17px;font-weight:300;color:#b9cbbd;margin-top:12px}
+.weather-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.weather-metrics>div{min-width:0;display:flex;flex-direction:column;gap:11px;padding:18px 11px;border-radius:13px;background:#ffffff08;border:1px solid #ffffff0a}
+.weather-metrics span{font-size:11px;color:#a9beae}
+.weather-metrics strong{font-size:clamp(13px,1.5vw,19px);font-weight:400;color:#eef5ed;white-space:nowrap}
+.weather-details-head{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:29px 0 17px}
+.weather-details-head h2{font-size:17px;font-weight:500;margin:0}
+.weather-subtle{font-size:12px;color:#9fb5a5}
+.weather-detail-days{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;min-height:145px}
+.weather-day{border:1px solid #ffffff16;background:#ffffff07;border-radius:16px;padding:14px 12px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.weather-day .day-label{font-size:11px;letter-spacing:.5px;color:#b1c5b5}
+.weather-day svg{width:29px;height:29px;color:#dceadd}
+.weather-day .day-high{font-size:22px;line-height:1.25;font-weight:350}
+.weather-day .day-low{font-size:12px;color:#9eb5a4}
+.weather-day .day-rain{font-size:11px;color:#b5cbbb}
+.weather-footer{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin:20px 0 27px}
+.weather-footer p{margin:0!important;font-size:11px!important;color:#95ad9c!important}
+.weather-footer a{color:#c8dccb;text-decoration:underline;text-underline-offset:3px}
+.weather-refresh{padding:9px 12px;font-size:12px;background:transparent;border:1px solid #ffffff3c;border-radius:10px;color:#d7e8d7}
+.weather-refresh:disabled{opacity:.5;cursor:default}
+@media(max-width:1000px){.weather-now{grid-template-columns:1fr}.weather-detail{padding:28px}.weather-now-icon{width:95px;height:95px}.weather-metrics{max-width:100%}}
+@media(max-width:720px){.weather-detail{padding:24px 20px}.weather-detail-days{gap:5px}.weather-day{padding:12px 5px}.weather-day .day-high{font-size:17px}.weather-day svg{width:24px;height:24px}.weather-now-main{gap:10px}.weather-now-icon{width:80px;height:80px}.weather-now-temp{font-size:72px}}
+
+
+/* HOME OS v0.17 — Polestar interactive model with lightweight static fallback. */
+.vehicle-view-switch{display:inline-flex;align-self:flex-start;gap:3px;margin:17px 0 0;padding:4px;border-radius:12px;background:#07160f55;border:1px solid #ffffff20}
+.vehicle-view-option{border:0;background:transparent;color:#a6bbaa;font-size:11px;letter-spacing:.25px;padding:10px 15px;border-radius:9px;transition:background .16s,color .16s;white-space:nowrap}
+.vehicle-view-option.is-selected{background:var(--os-accent);color:#183024}
+.vehicle-view-option:focus-visible{outline:2px solid #e5f4de;outline-offset:3px}
+.vehicle-stage{min-height:260px;max-height:450px;height:clamp(290px,47vh,430px);overflow:hidden;isolation:isolate}
+.vehicle-stage .vehicle-image{max-height:92%;height:min(43vh,365px);max-width:82%}
+.vehicle-stage [hidden],.vehicle-model-credit[hidden],.vehicle-gesture-hint[hidden]{display:none!important}
+.vehicle-model-container{position:relative;width:100%;height:100%;min-height:260px;overflow:hidden}
+.vehicle-model-container model-viewer{width:100%;height:100%;background:transparent;--poster-color:transparent;outline:none;display:block;touch-action:pan-y}
+.vehicle-model-status{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;text-align:center;padding:20px;color:#dce9d9;font-size:13px;pointer-events:none;background:radial-gradient(ellipse at center,#1b3026bb,transparent 70%)}
+.vehicle-model-status small{font-size:11px;color:#9cb5a4;max-width:245px;line-height:1.6}
+.vehicle-model-status.is-error{pointer-events:auto;color:#edb9b9}
+.vehicle-gesture-hint{position:absolute;bottom:9px;left:0;right:0;color:#c3d5c4;font-size:11px;letter-spacing:.35px;text-align:center;z-index:1;pointer-events:none}
+.vehicle-gesture-hint span{margin:0 9px;opacity:.5}
+.vehicle-view-footnote{color:#9fb7a6;font-size:11px;line-height:1.4;min-height:16px;text-align:center;margin:-2px 0 14px}
+.vehicle-model-credit{font-size:10px;color:#92aa99;text-align:center;margin:-10px 0 12px}
+.vehicle-model-credit a{color:#c1d7c2;text-decoration:underline;text-underline-offset:2px}
+@media(max-width:850px){.vehicle-stage{height:345px;min-height:290px;max-height:390px}}
+@media(max-width:720px){.vehicle-stage{height:320px;min-height:280px}.vehicle-view-option{padding:10px 11px;font-size:11px}}
+
 </style>
 </head>
 <body><div class="shell">
-<aside class="rail" aria-label="Navigation"><div class="brand">H.</div><button class="nav active" data-page="home" aria-label="Home" title="Home">⌂</button><button class="nav" data-page="weather" aria-label="Weather" title="Weather"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.1"/><path d="M12 1.7v2.4m0 15.8v2.4M1.7 12h2.4m15.8 0h2.4M4.7 4.7l1.7 1.7m11.2 11.2 1.7 1.7M19.3 4.7l-1.7 1.7M6.4 17.6l-1.7 1.7"/></svg></button><button class="nav" data-page="lights" aria-label="Lighting" title="Lighting"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6m-5 4h4m-5-7.3a7 7 0 1 1 6 0c-.7.6-1 1.3-1 2.3H10c0-1-.3-1.7-1-2.3Z"/></svg></button><button class="nav" data-page="vehicle" aria-label="Vehicle" title="Vehicle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11 7 5.8A2 2 0 0 1 8.9 4.5h6.2A2 2 0 0 1 17 5.8L19 11M5 17v2.5M19 17v2.5M4 11h16a1 1 0 0 1 1 1v5H3v-5a1 1 0 0 1 1-1Zm2 3.2h2m8 0h2"/></svg></button><button class="nav" data-page="settings" aria-label="Settings" title="Settings">⚙</button></aside>
-<main class="main"><header class="top"><span><strong>HOME</strong> / VAGGERYD</span><div class="top-meta"><span id="topdate">MONDAY 19 OCTOBER</span><span class="version-label" aria-label="HOME OS version 0.14">v0.14</span></div></header>
+<aside class="rail" aria-label="Navigation"><div class="brand">H.</div><button class="nav active" data-page="home" aria-label="Home" title="Home">⌂</button><button class="nav" data-page="weather" aria-label="Weather" title="Weather"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.1"/><path d="M12 1.7v2.4m0 15.8v2.4M1.7 12h2.4m15.8 0h2.4M4.7 4.7l1.7 1.7m11.2 11.2 1.7 1.7M19.3 4.7l-1.7 1.7M6.4 17.6l-1.7 1.7"/></svg></button><button class="nav" data-page="lights" aria-label="Lighting" title="Lighting"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6m-5 4h4m-5-7.3a7 7 0 1 1 6 0c-.7.6-1 1.3-1 2.3H10c0-1-.3-1.7-1-2.3Z"/></svg></button><button class="nav" data-page="vehicle" aria-label="Vehicle" title="Vehicle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11 7 5.8A2 2 0 0 1 8.9 4.5h6.2A2 2 0 0 1 17 5.8L19 11M5 17v2.5M19 17v2.5M4 11h16a1 1 0 0 1 1 1v5H3v-5a1 1 0 0 1 1-1Zm2 3.2h2m8 0h2"/></svg></button><button class="nav" data-page="settings" aria-label="Settings" title="Settings"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.4 2.8h3.2l.5 2.2 1.9.8 1.9-1.2 2.3 2.3-1.2 1.9.8 1.9 2.2.5v3.2l-2.2.5-.8 1.9 1.2 1.9-2.3 2.3-1.9-1.2-1.9.8-.5 2.2h-3.2l-.5-2.2-1.9-.8-1.9 1.2-2.3-2.3 1.2-1.9-.8-1.9-2.2-.5v-3.2l2.2-.5.8-1.9-1.2-1.9 2.3-2.3 1.9 1.2 1.9-.8.5-2.2Z"/><circle cx="12" cy="12" r="3.1"/></svg></button></aside>
+<main class="main"><header class="top"><span><strong>HOME</strong> / VAGGERYD</span><div class="top-meta"><span id="topdate">MONDAY 19 OCTOBER</span><span class="version-label" aria-label="HOME OS version 0.17">v0.17</span></div></header>
 <section id="home" class="page visible"><div class="dashboard">
 <article class="panel hero"><div class="hero-main"><div class="eyebrow">Good to be home</div><div class="clock" id="clock">13:18</div><div class="date" id="fulldate">Monday 19 October</div></div>
-<div class="outside"><div><div class="eyebrow">Outside · Weather demo</div><div class="temp">12°</div><div class="condition">Partly cloudy</div></div><div class="weather-icon" aria-hidden="true"><svg viewBox="0 0 140 110" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="87" cy="36" r="20" stroke="#e6e1c5" stroke-width="1.4"/><g stroke="#e6e1c5" stroke-width="1.4" stroke-linecap="round"><path d="M87 7V1M87 71v-6M58 36h-6M122 36h-6M66 15l-5-5M108 15l5-5"/></g><path d="M31 86h80c12 0 21-9 21-20 0-12-10-21-22-21-4 0-8 1-11 3-8-16-22-24-39-24-23 0-41 16-44 36C6 60 1 68 1 77c0 5 2 8 5 11" stroke="#e4eee0" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M35 98h72" stroke="#e4eee0" stroke-opacity=".35" stroke-width="1"/></svg></div></div></article>
+<div class="outside"><div><div class="eyebrow" id="weather-eyebrow">Outside · Connecting…</div><div class="temp" id="current-temp">—°</div><div class="condition" id="current-condition">Loading weather</div></div><div class="weather-icon" id="current-icon" aria-hidden="true"><svg viewBox="0 0 140 110" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="87" cy="36" r="20" stroke="#e6e1c5" stroke-width="1.4"/><g stroke="#e6e1c5" stroke-width="1.4" stroke-linecap="round"><path d="M87 7V1M87 71v-6M58 36h-6M122 36h-6M66 15l-5-5M108 15l5-5"/></g><path d="M31 86h80c12 0 21-9 21-20 0-12-10-21-22-21-4 0-8 1-11 3-8-16-22-24-39-24-23 0-41 16-44 36C6 60 1 68 1 77c0 5 2 8 5 11" stroke="#e4eee0" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M35 98h72" stroke="#e4eee0" stroke-opacity=".35" stroke-width="1"/></svg></div></div></article>
 <article class="panel scenes"><div class="heading"><h2>Lighting moods</h2><span class="muted">PLEJD · DEMO</span></div><div class="scene-grid"><button class="scene" data-scene="Morning"><span class="scene-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.1"/><path d="M12 1.7v2.4m0 15.8v2.4M1.7 12h2.4m15.8 0h2.4M4.7 4.7l1.7 1.7m11.2 11.2 1.7 1.7M19.3 4.7l-1.7 1.7M6.4 17.6l-1.7 1.7"/></svg></span><span class="scene-name">Morning</span></button><button class="scene active" data-scene="Evening"><span class="scene-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.3"/><path d="M12 3.7v16.6"/><path d="M12 3.7a8.3 8.3 0 0 1 0 16.6Z" fill="currentColor" fill-opacity=".14" stroke="none"/></svg></span><span class="scene-name">Evening</span></button><button class="scene" data-scene="Cozy"><span class="scene-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5L12 2Z"/></svg></span><span class="scene-name">Cozy</span></button><button class="scene" data-scene="All off"><span class="scene-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 15.3A8.7 8.7 0 0 1 8.7 3.5 8.8 8.8 0 1 0 20.5 15.3Z"/></svg></span><span class="scene-name">All off</span></button></div><div class="status" id="scenestatus" aria-live="polite">Evening selected · Demo only</div></article>
-<article class="panel forecast"><div class="heading"><h2>Next few days</h2><span class="muted">FORECAST · DEMO</span></div><div class="forecast-plot"><svg viewBox="0 0 1000 150" preserveAspectRatio="none" role="img" aria-label="Illustrative forecast temperatures Tuesday 11, Wednesday 13, Thursday 9, Friday 10, Saturday 12 degrees"><defs><linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d0e0cb" stop-opacity=".11"/><stop offset="1" stop-color="#d0e0cb" stop-opacity="0"/></linearGradient></defs><path d="M100 72 C200 72 230 27 300 27 S440 116 500 116 S630 97 700 97 S830 51 900 51 L900 150 L100 150Z" fill="url(#fade)"/><path d="M100 72 C200 72 230 27 300 27 S440 116 500 116 S630 97 700 97 S830 51 900 51" stroke="#d3e3ce" stroke-width="1.8" vector-effect="non-scaling-stroke" fill="none"/><g stroke="#d3e3ce" stroke-opacity=".17" stroke-dasharray="2 4"><path d="M100 0v150M300 0v150M500 0v150M700 0v150M900 0v150"/></g><g fill="#e6f0e2"><circle cx="100" cy="72" r="4"/><circle cx="300" cy="27" r="4"/><circle cx="500" cy="116" r="4"/><circle cx="700" cy="97" r="4"/><circle cx="900" cy="51" r="4"/></g></svg></div><div class="days"><div class="day"><span>Tue</span><span class="sym"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 18.4h11.1a4.2 4.2 0 0 0 .3-8.4 6.6 6.6 0 0 0-12.8 1.1 3.7 3.7 0 0 0 1.4 7.3Z"/></svg></span><strong>11°</strong></div><div class="day"><span>Wed</span><span class="sym"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.1"/><path d="M12 1.7v2.4m0 15.8v2.4M1.7 12h2.4m15.8 0h2.4M4.7 4.7l1.7 1.7m11.2 11.2 1.7 1.7M19.3 4.7l-1.7 1.7M6.4 17.6l-1.7 1.7"/></svg></span><strong>13°</strong></div><div class="day"><span>Thu</span><span class="sym"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 14.8h12.2a3.7 3.7 0 0 0-.2-7.4 6.3 6.3 0 0 0-12.1 1.1A3.2 3.2 0 0 0 6 14.8Z"/><path d="m8 17-1 2.5m5-2.5-1 2.5m5-2.5-1 2.5"/></svg></span><strong>9°</strong></div><div class="day"><span>Fri</span><span class="sym"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 18.4h11.1a4.2 4.2 0 0 0 .3-8.4 6.6 6.6 0 0 0-12.8 1.1 3.7 3.7 0 0 0 1.4 7.3Z"/></svg></span><strong>10°</strong></div><div class="day"><span>Sat</span><span class="sym"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.1"/><path d="M12 1.7v2.4m0 15.8v2.4M1.7 12h2.4m15.8 0h2.4M4.7 4.7l1.7 1.7m11.2 11.2 1.7 1.7M19.3 4.7l-1.7 1.7M6.4 17.6l-1.7 1.7"/></svg></span><strong>12°</strong></div></div></article>
+<article class="panel forecast"><div class="heading"><h2>Next few days</h2><a class="muted weather-source" id="forecast-source" href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer" title="Weather data by Open-Meteo">OPEN-METEO ↗</a></div><div class="forecast-plot"><svg id="forecast-chart" viewBox="0 0 1000 150" preserveAspectRatio="none" role="img" aria-label="Waiting for forecast"></svg></div>
+<div class="days" id="forecast-days" aria-live="polite"><div class="day"><span>—</span><span class="sym"></span><strong>—°</strong></div><div class="day"><span>—</span><span class="sym"></span><strong>—°</strong></div><div class="day"><span>—</span><span class="sym"></span><strong>—°</strong></div><div class="day"><span>—</span><span class="sym"></span><strong>—°</strong></div><div class="day"><span>—</span><span class="sym"></span><strong>—°</strong></div></div>
+</article>
 <article class="panel car"><div class="carhead"><h2>Polestar 2</h2><span class="muted">DEMO DATA</span></div><div class="car-center"><img class="car-graphic" src="assets/polestar-2-top.png" alt="Black Polestar 2 viewed from above"></div><div class="carbottom"><div class="percentage">68<span>%</span></div><div class="charge"><span class="charge-label">↯ &nbsp; Charging</span><div>7.4 kW · Demo</div></div></div><div class="bar"><div class="fill"></div></div></article>
 </div></section>
-<section class="page" id="weather"><div class="detail"><div class="eyebrow">HOME OS / WEATHER</div><h1>Weather</h1><p>Current conditions and forecast will appear here when a live weather service is connected. The home screen currently uses sample data.</p><button class="back" data-page="home">← Home</button></div></section>
+<section class="page" id="weather"><div class="detail weather-detail">
+  <div class="eyebrow">HOME OS / WEATHER · VAGGERYD</div>
+  <div class="weather-title-row"><h1>Weather</h1><span id="weather-status" class="weather-status" aria-live="polite">Connecting…</span></div>
+  <div class="weather-now"><div class="weather-now-main"><div class="weather-now-icon" id="weather-now-icon" aria-hidden="true"></div><div><div class="weather-now-temp" id="weather-now-temp">—°</div><div class="weather-now-condition" id="weather-now-condition">Loading weather</div></div></div>
+    <div class="weather-metrics"><div><span>Feels like</span><strong id="weather-feels">—°</strong></div><div><span>Humidity</span><strong id="weather-humidity">—%</strong></div><div><span>Wind</span><strong id="weather-wind">— km/h</strong></div></div></div>
+  <div class="weather-details-head"><h2>Next five days</h2><span class="weather-subtle">Daily highs & lows</span></div>
+  <div class="weather-detail-days" id="weather-detail-days" aria-live="polite"><span class="weather-subtle">Waiting for forecast…</span></div>
+  <div class="weather-footer"><p>Forecast data by <a href="https://open-meteo.com/" rel="noopener noreferrer" target="_blank">Open-Meteo</a> · Automatically refreshes every 20 minutes.</p><button type="button" class="weather-refresh" id="weather-refresh">↻ Refresh weather</button></div>
+  <button class="back" data-page="home">← Home</button>
+</div></section>
 <section class="page" id="lights"><div class="detail"><div class="eyebrow">HOME OS / LIGHTING</div><h1>Lighting</h1><p>Your four lighting moods can be selected from the home screen. They are currently simulated and do not control Plejd.</p><button class="back" data-page="home">← Home</button></div></section>
 <section class="page" id="vehicle"><div class="vehicle-page">
-<div class="vehicle-visual"><div class="eyebrow">HOME OS / VEHICLE</div><h1 class="vehicle-title">Polestar 2</h1><div class="vehicle-sub">Connected vehicle · Preview data</div><div class="vehicle-image-wrap"><img class="vehicle-image" src="assets/polestar-2-top.png" alt="Black Polestar 2 from above"></div><div class="vehicle-stat-row"><div class="vehicle-soc">68<span>%</span></div><div class="vehicle-stat-label">CHARGING · DEMO<br>7.4 kW · Sample reading</div></div><div class="vehicle-track"><span></span></div><p class="vehicle-foot">Battery and charging information will become live once a supported integration is connected.</p><button class="back vehicle-back" data-page="home">← Home</button></div>
+<div class="vehicle-visual"><div class="eyebrow">HOME OS / VEHICLE</div><h1 class="vehicle-title">Polestar 2</h1><div class="vehicle-sub">Vehicle preview · Demo data</div><div class="vehicle-view-switch" role="group" aria-label="Choose vehicle view">
+  <button class="vehicle-view-option is-selected" type="button" id="vehicle-view-photo" aria-pressed="true">Top view</button>
+  <button class="vehicle-view-option" type="button" id="vehicle-view-3d" aria-pressed="false">Interactive 3D <span aria-hidden="true">↗</span></button>
+</div>
+<div class="vehicle-image-wrap vehicle-stage" id="vehicle-stage">
+  <img class="vehicle-image" id="vehicle-static-image" src="assets/polestar-2-top.png" alt="Black Polestar 2 from above">
+  <div id="vehicle-model-container" class="vehicle-model-container" hidden>
+    <div id="vehicle-model-status" class="vehicle-model-status" role="status" aria-live="polite">Preparing 3D viewer…</div>
+    <div class="vehicle-gesture-hint" id="vehicle-gesture-hint" hidden>Drag to rotate <span>·</span> Pinch to zoom</div>
+  </div>
+</div>
+<div class="vehicle-view-footnote" id="vehicle-view-footnote" aria-live="polite">Top-down render · Tap Interactive 3D to explore the model.</div>
+<div class="vehicle-model-credit" id="vehicle-model-credit" hidden>3D model by <a href="https://sketchfab.com/iori308408" target="_blank" rel="noopener noreferrer">Nieve5677</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a></div><div class="vehicle-stat-row"><div class="vehicle-soc">68<span>%</span></div><div class="vehicle-stat-label">CHARGING · DEMO<br>7.4 kW · Sample reading</div></div><div class="vehicle-track"><span></span></div><p class="vehicle-foot">Battery and charging information will become live once a supported integration is connected.</p><button class="back vehicle-back" data-page="home">← Home</button></div>
 <div class="vehicle-controls"><div class="vehicle-card"><div class="overline">CLIMATE / DEPARTURE</div><h2 style="margin-top:12px">Departure schedule</h2><div class="departure-time" id="departure-display">07:30</div><p>Set when you'd like the car ready. This is a local interface demo and does not update your Polestar.</p><div class="vehicle-form-row"><label for="departure-input">Departure time</label><input id="departure-input" type="time" value="07:30"></div><div class="weekdays" aria-label="Repeat on weekdays"><button class="weekday selected" data-weekday="M" aria-pressed="true">M</button><button class="weekday selected" data-weekday="Tu" aria-pressed="true">T</button><button class="weekday selected" data-weekday="W" aria-pressed="true">W</button><button class="weekday selected" data-weekday="Th" aria-pressed="true">T</button><button class="weekday selected" data-weekday="F" aria-pressed="true">F</button><button class="weekday" data-weekday="Sa" aria-pressed="false">S</button><button class="weekday" data-weekday="Su" aria-pressed="false">S</button></div><div class="vehicle-form-row"><input id="departure-enabled" type="checkbox" checked><label for="departure-enabled">Enable schedule (demo)</label></div><button class="vehicle-action" id="save-departure">Save demo schedule</button><div id="departure-message" class="vehicle-message" aria-live="polite"></div></div><div class="vehicle-card"><div class="overline">VEHICLE STATUS</div><h2 style="margin-top:12px">Charging overview</h2><div class="vehicle-stat-row"><span class="vehicle-foot">Battery</span><strong>68%</strong></div><div class="vehicle-stat-row" style="margin-top:15px"><span class="vehicle-foot">Charging power</span><strong>7.4 kW</strong></div><div class="vehicle-stat-row" style="margin-top:15px"><span class="vehicle-foot">Status</span><strong>Charging</strong></div><p class="vehicle-foot">Illustrative values only · Not connected to your car.</p></div></div>
 </div></section>
 <section class="page" id="settings"><div class="detail settings-panel">
 <div class="eyebrow">HOME OS / SETTINGS</div><h1>Appearance</h1>
-<p class="settings-intro">Make HOME OS your own. Adjust the background colour without affecting your icons, text or Polestar image. Changes are saved on this device.</p>
+<p class="settings-intro">Make HOME OS your own. Adjust the background colour and brightness without affecting your icons, text or Polestar image. Changes are saved on this device.</p>
 <div class="theme-controls">
   <div class="theme-control">
     <div class="theme-control-head"><label class="theme-control-title" for="hue">Background hue</label><output class="theme-control-output" id="huevalue" for="hue">155°</output></div>
@@ -105,6 +187,11 @@ body{background:var(--os-root)}
     <div class="theme-control-head"><label class="theme-control-title" for="saturation">Background saturation</label><output class="theme-control-output" id="saturationvalue" for="saturation">100%</output></div>
     <input class="theme-range" id="saturation" type="range" min="0" max="200" value="100" step="1" aria-label="Background saturation">
     <div class="theme-hint">0% is neutral charcoal; 100% is original; 200% is richer colour.</div>
+  </div>
+  <div class="theme-control">
+    <div class="theme-control-head"><label class="theme-control-title" for="brightness">Background brightness</label><output class="theme-control-output" id="brightnessvalue" for="brightness">100%</output></div>
+    <input class="theme-range" id="brightness" type="range" min="30" max="170" value="100" step="1" aria-label="Background brightness">
+    <div class="theme-hint">Darken or brighten the dashboard backgrounds. This does not change your tablet's screen brightness.</div>
   </div>
   <div class="theme-control">
     <div class="theme-control-head"><label class="theme-control-title" for="grain">Grain texture</label><output class="theme-control-output" id="grainvalue" for="grain">0%</output></div>
@@ -127,11 +214,13 @@ document.querySelectorAll('[data-page]').forEach(function(b){b.addEventListener(
   var root=document.documentElement;
   var hueInput=document.getElementById('hue');
   var saturationInput=document.getElementById('saturation');
+  var brightnessInput=document.getElementById('brightness');
   var grainInput=document.getElementById('grain');
   var outputHue=document.getElementById('huevalue');
   var outputSaturation=document.getElementById('saturationvalue');
+  var outputBrightness=document.getElementById('brightnessvalue');
   var outputGrain=document.getElementById('grainvalue');
-  var defaults={hue:155,saturation:100,grain:0};
+  var defaults={hue:155,saturation:100,brightness:100,grain:0};
   var palette={"root":"#080e0c","accent":"#d7e5d2","hero-a":"#284337","hero-b":"#1c3229","hero-c":"#14251e","hero-d":"#102019","scenes-a":"#192b22","scenes-b":"#15251e","scene":"#24382d","scene-hover":"#304638","forecast-a":"#172920","forecast-b":"#192a23","forecast-c":"#14241d","car-a":"#2b3c32","car-b":"#1b2b23","car-c":"#17271f","bar":"#3c5042","fill":"#cce2c5","detail":"#172920","vehicle-a":"#284036","vehicle-b":"#15251e","vehicle-c":"#101d17","track":"#415648","weekday":"#2b4033","time":"#293e31"};
   var keys=Object.keys(palette);
   var baseHue=155;
@@ -150,35 +239,38 @@ document.querySelectorAll('[data-page]').forEach(function(b){b.addEventListener(
     return [h,s*100,l*100];
   }
   var originals={};keys.forEach(function(k){originals[k]=hexHsl(palette[k]);});
-  function format(k,hue,saturation){
-    if(hue===defaults.hue&&saturation===defaults.saturation)return palette[k];
+  function format(k,hue,saturation,brightness){
+    var isBackground=(k!=='accent' && k!=='fill');
+    if(hue===defaults.hue&&saturation===defaults.saturation&&(!isBackground||brightness===defaults.brightness))return palette[k];
     var v=originals[k],newHue=(v[0]+hue-baseHue+360)%360;
     var newSat=Math.min(100,Math.max(0,v[1]*saturation/100));
-    return 'hsl('+newHue.toFixed(1)+','+newSat.toFixed(1)+'%,'+v[2].toFixed(1)+'%)';
+    var newLight=Math.min(100,Math.max(0,isBackground?v[2]*brightness/100:v[2]));
+    return 'hsl('+newHue.toFixed(1)+','+newSat.toFixed(1)+'%,'+newLight.toFixed(1)+'%)';
   }
   function render(){
     raf=0;
-    var hue=clamp(hueInput.value,0,360,defaults.hue),sat=clamp(saturationInput.value,0,200,defaults.saturation),grain=clamp(grainInput.value,0,35,0);
-    keys.forEach(function(k){root.style.setProperty('--os-'+k,format(k,hue,sat));});
+    var hue=clamp(hueInput.value,0,360,defaults.hue),sat=clamp(saturationInput.value,0,200,defaults.saturation),bright=clamp(brightnessInput.value,30,170,defaults.brightness),grain=clamp(grainInput.value,0,35,0);
+    keys.forEach(function(k){root.style.setProperty('--os-'+k,format(k,hue,sat,bright));});
     root.style.setProperty('--grain-opacity',String(grain/100));
     root.style.setProperty('--os-demo-color','hsl('+hue+', '+Math.min(100,36*sat/100)+'%, 44%)');
-    outputHue.textContent=hue+'°';outputSaturation.textContent=sat+'%';outputGrain.textContent=grain+'%';
+    outputHue.textContent=hue+'°';outputSaturation.textContent=sat+'%';outputBrightness.textContent=bright+'%';outputGrain.textContent=grain+'%';
   }
   function schedule(){if(!raf)raf=requestAnimationFrame(render);}
   function save(){
-    try{localStorage.setItem(key,JSON.stringify({hue:Number(hueInput.value),saturation:Number(saturationInput.value),grain:Number(grainInput.value)}));}catch(e){}
+    try{localStorage.setItem(key,JSON.stringify({hue:Number(hueInput.value),saturation:Number(saturationInput.value),brightness:Number(brightnessInput.value),grain:Number(grainInput.value)}));}catch(e){}
   }
   try{
     var saved=JSON.parse(localStorage.getItem(key)||'null');
     if(saved){
       hueInput.value=clamp(saved.hue,0,360,defaults.hue);
       saturationInput.value=clamp(saved.saturation,0,200,defaults.saturation);
+      brightnessInput.value=clamp(saved.brightness,30,170,defaults.brightness);
       grainInput.value=clamp(saved.grain,0,35,defaults.grain);
     }
   }catch(e){}
-  [hueInput,saturationInput,grainInput].forEach(function(el){el.addEventListener('input',schedule);el.addEventListener('change',function(){render();save();});});
+  [hueInput,saturationInput,brightnessInput,grainInput].forEach(function(el){el.addEventListener('input',schedule);el.addEventListener('change',function(){render();save();});});
   document.getElementById('reset-appearance').addEventListener('click',function(){
-    hueInput.value=defaults.hue;saturationInput.value=defaults.saturation;grainInput.value=defaults.grain;
+    hueInput.value=defaults.hue;saturationInput.value=defaults.saturation;brightnessInput.value=defaults.brightness;grainInput.value=defaults.grain;
     render();save();
   });
   render();
@@ -191,4 +283,227 @@ days.forEach(function(b){b.addEventListener('click',function(){var on=!b.classLi
 document.getElementById('save-departure').addEventListener('click',function(){if(!/^([01]\d|2[0-3]):[0-5]\d$/.test(time.value)){msg.textContent='Choose a valid time.';return}display.textContent=time.value;var data={time:time.value,enabled:enabled.checked,days:days.map(function(b){return b.classList.contains('selected')})};try{localStorage.setItem('homeos-departure-demo',JSON.stringify(data));msg.textContent='Demo schedule saved on this device — not sent to your car.'}catch(e){msg.textContent='Demo updated for this session — not sent to your car.'}});
 })();
 </script>
+<script>
+/* v0.16 — live weather from Open-Meteo. No API keys or local bridge required. */
+(function(){
+  'use strict';
+  var API='https://api.open-meteo.com/v1/forecast?latitude=57.498&longitude=14.148&current=temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,weather_code,is_day&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&forecast_days=6&timezone=Europe%2FStockholm';
+  var cacheKey='homeos-weather-v1', refreshMs=20*60*1000, inFlight=false, updatedAt=0;
+  var $=function(id){return document.getElementById(id)};
+  var escapeHTML=function(value){return String(value).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]});};
+  function icon(kind){
+    var shapes={
+      sun:'<circle cx="12" cy="12" r="4.1"/><path d="M12 1.7v2.4m0 15.8v2.4M1.7 12h2.4m15.8 0h2.4M4.7 4.7l1.7 1.7m11.2 11.2 1.7 1.7M19.3 4.7l-1.7 1.7M6.4 17.6l-1.7 1.7"/>',
+      moon:'<path d="M20.5 15.3A8.7 8.7 0 0 1 8.7 3.5 8.8 8.8 0 1 0 20.5 15.3Z"/>',
+      cloud:'<path d="M6.5 18.4h11.1a4.2 4.2 0 0 0 .3-8.4 6.6 6.6 0 0 0-12.8 1.1 3.7 3.7 0 0 0 1.4 7.3Z"/>',
+      partly:'<circle cx="16.1" cy="7.8" r="3.2"/><path d="M16.1 1.7v1.4m0 9.5v1m-6.1-5.8h1.4m9.3 0h1.3M11.7 3.4l1 1m6.8-1 1 1M6.2 19h11a3.9 3.9 0 0 0 .1-7.8 6.3 6.3 0 0 0-12.1 1.4A3.3 3.3 0 0 0 6.2 19Z"/>',
+      rain:'<path d="M6.5 14.8h11.2a3.7 3.7 0 0 0 .1-7.4 6.3 6.3 0 0 0-12.1 1.1 3.2 3.2 0 0 0 .8 6.3Z"/><path d="m8 17-1 2.5m5-2.5-1 2.5m5-2.5-1 2.5"/>',
+      snow:'<path d="M6.5 14.8h11.2a3.7 3.7 0 0 0 .1-7.4 6.3 6.3 0 0 0-12.1 1.1 3.2 3.2 0 0 0 .8 6.3Z"/><path d="M8 18v4m-2-2h4m6-2v4m-2-2h4"/>',
+      fog:'<path d="M6.5 13.5h11.2a3.7 3.7 0 0 0 .1-7.4 6.3 6.3 0 0 0-12.1 1.1 3.2 3.2 0 0 0 .8 6.3ZM3 17h18M6 20h12"/>',
+      storm:'<path d="M6.5 14.7h11.2a3.7 3.7 0 0 0 .1-7.4 6.3 6.3 0 0 0-12.1 1.1 3.2 3.2 0 0 0 .8 6.3Z"/><path d="m13 15.5-3 4h3l-1 3.5 4-5h-3Z"/>'
+    };
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">'+(shapes[kind]||shapes.cloud)+'</svg>';
+  }
+  function description(code,night){
+    if(code===0)return [night?'Clear night':'Clear sky',night?'moon':'sun'];
+    if(code===1||code===2)return [code===1?'Mostly clear':'Partly cloudy',night?'cloud':'partly'];
+    if(code===3)return ['Overcast','cloud'];
+    if(code===45||code===48)return ['Foggy','fog'];
+    if(code===51||code===53||code===55)return ['Drizzle','rain'];
+    if(code===56||code===57)return ['Freezing drizzle','rain'];
+    if(code===61||code===63||code===65)return ['Rain','rain'];
+    if(code===66||code===67)return ['Freezing rain','rain'];
+    if(code===71||code===73||code===75||code===77)return ['Snow','snow'];
+    if(code===80||code===81||code===82)return ['Rain showers','rain'];
+    if(code===85||code===86)return ['Snow showers','snow'];
+    if(code===95||code===96||code===99)return ['Thunderstorm','storm'];
+    return ['Cloudy','cloud'];
+  }
+  function degrees(n){return Number.isFinite(Number(n))?Math.round(Number(n))+'°':'—°';}
+  function dayName(str){
+    var d=new Date(str+'T12:00:00');
+    return isNaN(d.getTime())?'—':d.toLocaleDateString('en-GB',{weekday:'short'});
+  }
+  function clock(ts){try{return new Date(ts).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});}catch(e){return '—';}}
+  function setStatus(message){$('weather-status').textContent=message;}
+  function drawLine(t){
+    var values=t.map(function(v){return Number(v)});
+    var max=Math.max.apply(null,values),min=Math.min.apply(null,values);
+    if(!Number.isFinite(max)||!Number.isFinite(min))return;
+    if(max===min){min-=2;max+=2;}
+    else {min-=1;max+=1;}
+    var p=values.map(function(v,i){return {x:100+200*i,y:115-(v-min)/(max-min)*95};});
+    var path='M '+p[0].x+' '+p[0].y;
+    for(var i=1;i<p.length;i++){
+      var prev=p[i-1],next=p[i];
+      path+=' C '+(prev.x+67)+' '+prev.y+' '+(next.x-67)+' '+next.y+' '+next.x+' '+next.y;
+    }
+    var bottom=path+' L 900 150 L 100 150 Z';
+    var guides=p.map(function(pt){return '<path d="M'+pt.x+' 0 V150"/>';}).join('');
+    var dots=p.map(function(pt){return '<circle cx="'+pt.x+'" cy="'+pt.y.toFixed(1)+'" r="4"/>';}).join('');
+    $('forecast-chart').innerHTML='<defs><linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d0e0cb" stop-opacity=".11"/><stop offset="1" stop-color="#d0e0cb" stop-opacity="0"/></linearGradient></defs><path d="'+bottom+'" fill="url(#fade)"/><path d="'+path+'" stroke="#d3e3ce" stroke-width="1.8" vector-effect="non-scaling-stroke" fill="none"/><g stroke="#d3e3ce" stroke-opacity=".17" stroke-dasharray="2 4">'+guides+'</g><g fill="#e6f0e2">'+dots+'</g>';
+    $('forecast-chart').setAttribute('aria-label','Daily high temperatures: '+values.map(degrees).join(', '));
+  }
+  function valid(d){return !!(d&&d.current&&d.daily&&Array.isArray(d.daily.time)&&d.daily.time.length>=6&&Array.isArray(d.daily.temperature_2m_max)&&d.daily.temperature_2m_max.length>=6&&Array.isArray(d.daily.temperature_2m_min)&&Array.isArray(d.daily.weather_code));}
+  function render(data,ts,offline){
+    if(!valid(data))return;
+    var now=data.current,condition=description(Number(now.weather_code),Number(now.is_day)===0);
+    $('current-temp').textContent=degrees(now.temperature_2m);
+    $('current-condition').textContent=condition[0];
+    $('current-icon').innerHTML=icon(condition[1]);
+    $('weather-now-icon').innerHTML=icon(condition[1]);
+    $('weather-now-temp').textContent=degrees(now.temperature_2m);
+    $('weather-now-condition').textContent=condition[0];
+    $('weather-feels').textContent=degrees(now.apparent_temperature);
+    $('weather-humidity').textContent=now.relative_humidity_2m==null?'—%':Math.round(now.relative_humidity_2m)+'%';
+    $('weather-wind').textContent=now.wind_speed_10m==null?'— km/h':Math.round(now.wind_speed_10m)+' km/h';
+    $('weather-eyebrow').textContent=offline?'Outside · Cached weather':'Outside · Vaggeryd';
+    $('forecast-source').title=offline?'Saved forecast · Open-Meteo':'Live forecast · Open-Meteo';
+    setStatus((offline?'Offline · Saved ':'Updated ')+clock(ts));
+    var highs=[],home='',details='';
+    for(var i=1;i<=5;i++){
+      var h=data.daily.temperature_2m_max[i],l=data.daily.temperature_2m_min[i],w=Number(data.daily.weather_code[i]);
+      var rain=data.daily.precipitation_probability_max&&data.daily.precipitation_probability_max[i];
+      var entry=description(w,false),day=dayName(data.daily.time[i]);
+      highs.push(h);
+      home+='<div class="day"><span>'+escapeHTML(day)+'</span><span class="sym">'+icon(entry[1])+'</span><strong>'+degrees(h)+'</strong></div>';
+      details+='<div class="weather-day"><span class="day-label">'+escapeHTML(day)+'</span>'+icon(entry[1])+'<span class="day-high">'+degrees(h)+'</span><span class="day-low">'+degrees(l)+' low</span><span class="day-rain">'+(rain==null?'':Math.round(rain)+'% rain')+'</span></div>';
+    }
+    $('forecast-days').innerHTML=home;
+    $('weather-detail-days').innerHTML=details;
+    drawLine(highs);
+  }
+  var saved=null;
+  try{saved=JSON.parse(localStorage.getItem(cacheKey)||'null')}catch(e){}
+  if(saved&&saved.data&&valid(saved.data)){
+    render(saved.data,saved.updatedAt||Date.now(),true);
+    updatedAt=Number(saved.updatedAt)||0;
+  }
+  function load(force){
+    if(inFlight)return;
+    if(!force&&Date.now()-updatedAt<refreshMs)return;
+    inFlight=true;
+    $('weather-refresh').disabled=true;
+    var controller=typeof AbortController!=='undefined'?new AbortController():null;
+    var timeout=setTimeout(function(){if(controller)controller.abort()},12000);
+    fetch(API,controller?{signal:controller.signal,cache:'no-store'}:{cache:'no-store'})
+      .then(function(r){if(!r.ok)throw Error('Weather API '+r.status);return r.json()})
+      .then(function(data){
+        if(!valid(data))throw Error('Incomplete weather response');
+        updatedAt=Date.now();
+        render(data,updatedAt,false);
+        saved={data:data,updatedAt:updatedAt};
+        try{localStorage.setItem(cacheKey,JSON.stringify(saved))}catch(e){}
+      })
+      .catch(function(){
+        if(saved&&saved.data&&valid(saved.data)){
+          render(saved.data,saved.updatedAt||Date.now(),true);
+          $('weather-eyebrow').textContent='Outside · Offline';
+        }else{
+          $('weather-eyebrow').textContent='Outside · Weather unavailable';
+          $('current-condition').textContent='Check connection';
+          $('weather-now-condition').textContent='Check connection';
+          setStatus('Weather unavailable · Try refresh');
+        }
+      })
+      .then(function(){clearTimeout(timeout);inFlight=false;$('weather-refresh').disabled=false;});
+  }
+  $('weather-refresh').addEventListener('click',function(){load(true)});
+  window.addEventListener('online',function(){load(true)});
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)load(false)});
+  load(true);
+  setInterval(function(){load(false)},refreshMs);
+})();
+</script>
+
+<script>
+/* HOME OS v0.17: only fetch and initialize 3D when the user explicitly chooses it.
+   Photo mode and all other tabs work without model-viewer or a WebGL-capable device. */
+(function(){
+  'use strict';
+  var photoBtn=document.getElementById('vehicle-view-photo');
+  var modelBtn=document.getElementById('vehicle-view-3d');
+  var photo=document.getElementById('vehicle-static-image');
+  var container=document.getElementById('vehicle-model-container');
+  var status=document.getElementById('vehicle-model-status');
+  var hint=document.getElementById('vehicle-gesture-hint');
+  var foot=document.getElementById('vehicle-view-footnote');
+  var credit=document.getElementById('vehicle-model-credit');
+  var viewer=null,started=false,failed=false;
+  var componentPromise=null;
+  function setStatus(title,small,isError){
+    status.classList.toggle('is-error',!!isError);
+    status.textContent=title;
+    if(small){var el=document.createElement('small');el.textContent=small;status.appendChild(el);}
+    status.hidden=false;
+  }
+  function activate(which){
+    var three=(which==='3d');
+    photoBtn.classList.toggle('is-selected',!three);
+    modelBtn.classList.toggle('is-selected',three);
+    photoBtn.setAttribute('aria-pressed',String(!three));
+    modelBtn.setAttribute('aria-pressed',String(three));
+    photo.hidden=three;
+    container.hidden=!three;
+    foot.textContent=three?'Interactive 3D · Model loads only when requested.':'Top-down render · Tap Interactive 3D to explore the model.';
+    credit.hidden=!three;
+    if(three && !started && !failed) start();
+  }
+  photoBtn.addEventListener('click',function(){activate('photo');});
+  modelBtn.addEventListener('click',function(){activate('3d');});
+  function getComponent(){
+    if(window.customElements && customElements.get('model-viewer'))return Promise.resolve();
+    if(componentPromise)return componentPromise;
+    componentPromise=new Promise(function(resolve,reject){
+      if(!window.customElements){reject(new Error('This browser is too old for the 3D viewer.'));return;}
+      var script=document.createElement('script');
+      script.type='module';
+      script.src='https://ajax.googleapis.com/ajax/libs/model-viewer/4.4.0/model-viewer.min.js';
+      script.onerror=function(){reject(new Error('Could not load the 3D viewer library. Check the internet connection.'));};
+      document.head.appendChild(script);
+      var done=false;
+      customElements.whenDefined('model-viewer').then(function(){done=true;resolve();});
+      window.setTimeout(function(){if(!done)reject(new Error('3D viewer timed out. The tablet or browser may not support it.'));},18000);
+    });
+    return componentPromise;
+  }
+  function onError(e){
+    failed=true;
+    var extra=e && e.detail && e.detail.type ? ' ('+e.detail.type+')' : '';
+    setStatus('Could not display the 3D model'+extra,'Use Top view instead, or try another browser.',true);
+    foot.textContent='3D unavailable · Top view remains available.';
+  }
+  function start(){
+    started=true;
+    setStatus('Loading 3D viewer…','The model is about 36 MB and may take a while on the tablet.');
+    if(!window.WebGLRenderingContext){onError();return;}
+    getComponent().then(function(){
+      var el=document.createElement('model-viewer');
+      el.id='polestar-model';
+      el.setAttribute('src','assets/polestar-2-optimized.glb');
+      el.setAttribute('alt','Interactive 3D model of a black Polestar 2');
+      el.setAttribute('camera-controls','');
+      el.setAttribute('touch-action','pan-y');
+      el.setAttribute('shadow-intensity','0.5');
+      el.setAttribute('environment-image','neutral');
+      el.setAttribute('tone-mapping','aces');
+      el.setAttribute('exposure','1.1');
+      el.setAttribute('camera-orbit','45deg 72deg auto');
+      el.setAttribute('field-of-view','35deg');
+      el.setAttribute('interaction-prompt','none');
+      el.setAttribute('loading','eager');
+      el.addEventListener('progress',function(e){
+        if(!status.hidden && e.detail && typeof e.detail.totalProgress==='number'){
+          var pc=Math.round(e.detail.totalProgress*100);
+          if(pc<100)setStatus('Loading 3D model · '+pc+'%','Drag to rotate once it finishes loading.');
+        }
+      });
+      el.addEventListener('load',function(){status.hidden=true;hint.hidden=false;foot.textContent='Drag to rotate · Pinch or scroll to zoom.';});
+      el.addEventListener('error',onError);
+      viewer=el;container.appendChild(el);
+    }).catch(function(e){failed=true;setStatus(e.message||'3D viewer unavailable','Switch back to Top view if needed.',true);});
+  }
+})();
+</script>
+
 </body></html>
