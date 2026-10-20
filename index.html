@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080e0c">
-<title>HOME OS — v0.31</title>
+<title>HOME OS — v0.34</title>
 <style>
 :root{--os-root:#080e0c;--os-accent:#d7e5d2;--os-hero-a:#284337;--os-hero-b:#1c3229;--os-hero-c:#14251e;--os-hero-d:#102019;--os-scenes-a:#192b22;--os-scenes-b:#15251e;--os-scene:#24382d;--os-scene-hover:#304638;--os-forecast-a:#172920;--os-forecast-b:#192a23;--os-forecast-c:#14241d;--os-car-a:#2b3c32;--os-car-b:#1b2b23;--os-car-c:#17271f;--os-bar:#3c5042;--os-fill:#cce2c5;--os-detail:#172920;--os-vehicle-a:#284036;--os-vehicle-b:#15251e;--os-vehicle-c:#101d17;--os-track:#415648;--os-weekday:#2b4033;--os-time:#293e31;--os-demo-color:#446957;font-family:Inter,"Segoe UI",Arial,sans-serif;color:#edf3ec;background:var(--os-root);--grain-opacity:0;--text:#edf3ec;--muted:#a5b9aa;--line:#ffffff16;--card:#15251e}
 *{box-sizing:border-box}body{margin:0}button{font:inherit;cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid #d4e5cf;outline-offset:3px}
@@ -153,7 +153,7 @@ body{background:var(--os-root)}
 .bridge-footnote{border-top:1px solid #ffffff18;padding-top:13px;margin-top:22px;color:#95b39d;font-size:11px;line-height:1.65}
 @media(max-width:720px){.bridge-settings{padding-top:22px;margin-top:24px}}
 
-/* v0.31 · Relaxed battery numerals, hourly weather and turntable-ready vehicle layout. */
+/* v0.34 · Relaxed battery numerals, hourly weather and turntable-ready vehicle layout. */
 /* The battery reading contains two spans: digits must remain full size, only % shrinks. */
 .percentage > span:first-child,.vehicle-soc > span:first-child {font-size:1em;display:inline-block;}
 .percentage > span:last-child,.vehicle-soc > span:last-child{font-size:.42em;vertical-align:baseline;}
@@ -201,7 +201,7 @@ body{background:var(--os-root)}
 }
 
 
-/* HOME OS v0.31 · Interactive hourly Weather + render-based Polestar turntable */
+/* HOME OS v0.34 · Interactive hourly Weather + render-based Polestar turntable */
 .weather-v22{display:flex;flex-direction:column;min-height:calc(100vh - 110px);padding:32px 38px 24px;gap:0;}
 .weather-v22 .weather-title-row h1{margin:14px 0 8px;}
 .weather-v22-now{display:grid;grid-template-columns:minmax(185px,.65fr) minmax(0,1.55fr);align-items:stretch;gap:23px;padding:15px 0 20px;border-bottom:1px solid #ffffff12;}
@@ -322,7 +322,7 @@ body{background:var(--os-root)}
 }
 
 
-/* v0.31 · Optional charging-effect preview (visual only, never changes vehicle readings). */
+/* v0.34 · Optional charging-effect preview (visual only, never changes vehicle readings). */
 .charging-preview-btn{border:1px solid #ffffff23;background:#ffffff08;color:#c5d6c8;border-radius:10px;padding:8px 10px;cursor:pointer;flex:none;font:inherit;font-size:11px;letter-spacing:.15px;white-space:nowrap;transition:background .2s,color .2s,border-color .2s;}
 .charging-preview-btn:hover{background:#ffffff14;}
 .charging-preview-btn[aria-pressed="true"]{background:#d7e5d219;color:#eef7ec;border-color:#d7e5d265;}
@@ -334,7 +334,7 @@ body{background:var(--os-root)}
 @media(prefers-reduced-motion:reduce){.vehicle-v22-status.is-charging .vehicle-track span#vehicle-battery-fill,.vehicle-v22-status.is-preview .vehicle-track:after,.turntable-stage.is-charging::after,.turntable-stage.is-charging::before{animation:none!important;}}
 @media(max-width:520px){.vehicle-v22-actions{flex-wrap:wrap;}.charging-preview-btn{margin-left:auto;}}
 
-/* HOME OS v0.31 — gentle charging sweep and minimal status indicator.
+/* HOME OS v0.34 — gentle charging sweep and minimal status indicator.
    Intentionally no under-car glow: the turntable blends into its background. */
 .turntable-stage::before,.turntable-stage::after{content:none!important;display:none!important;animation:none!important;}
 .vehicle-v22-status .vehicle-track{isolation:isolate;}
@@ -378,14 +378,14 @@ body{background:var(--os-root)}
  .turntable-stage.is-preview .charge-plate-fill::after{animation:none!important;}
 }
 
-/* v0.31 — fine-grid Polestar-inspired charge floor */
+/* v0.34 — fine-grid Polestar-inspired charge floor */
 .turntable-stage{isolation:isolate;}
 .turntable-stage .turntable-image{z-index:3;width:min(132%,1050px);max-width:none;top:43%;left:50%;}
 .turntable-stage .charge-plate{
   left:3%;right:3%;bottom:14%;height:clamp(145px,25%,195px);min-height:0;max-height:none;
   transform:none;transform-origin:center;background:#0e1814;
   clip-path:polygon(6.5% 0,93.5% 0,100% 100%,0% 100%);
-  border:0;border-radius:0;box-shadow:none;opacity:1;z-index:1;
+  border:0;border-radius:8px;box-shadow:none;opacity:1;z-index:1;
 }
 .turntable-stage .charge-plate::before{
   content:"";position:absolute;inset:0;opacity:.87;
@@ -444,7 +444,7 @@ body{background:var(--os-root)}
 }
 
 
-/* HOME OS v0.31 — geometrically accurate SVG plate / 25 fps turntable */
+/* HOME OS v0.34 — geometrically accurate SVG plate / 25 fps turntable */
 .turntable-stage .charge-plate-svg{
  position:absolute;z-index:2;width:98%;left:1%;bottom:3%;height:clamp(185px,43%,270px);
  overflow:visible;pointer-events:none;filter:drop-shadow(0 10px 20px #050c0b35);
@@ -485,11 +485,74 @@ body{background:var(--os-root)}
 @media(prefers-reduced-motion:reduce){
  .turntable-stage .plate-charge-sweep{animation:none!important;}
 }
+
+
+/* v0.34 — weather readability + tunable SVG charge plate */
+.weather-v22 .weather-click-mark{display:none!important;}
+.weather-v22 .weather-reading-label{letter-spacing:1.1px;}
+.weather-v22 .weather-hourly-section{padding:21px 12px 22px;min-height:305px;flex:0 0 auto;}
+.weather-v22 .weather-hourly-chart-wrap{height:clamp(225px,28vh,295px);margin-top:13px;}
+.weather-v22 .weather-hourly-chart-wrap svg{width:100%;height:100%;overflow:visible;}
+.weather-v22 .weather-five-day-section{margin-top:auto;}
+/* The plate stays an SVG; all geometry is transformed consistently via JS. */
+.turntable-stage .charge-plate-svg{
+  left:50%!important;bottom:var(--plate-bottom,3%)!important;
+  width:var(--plate-width,98%)!important;
+  height:var(--plate-height,235px)!important;
+  opacity:var(--plate-opacity,.28)!important;
+  transform:translateX(calc(-50% + var(--plate-x,0px)))!important;
+  transform-origin:center bottom;
+  filter:none!important;
+}
+.plate-base{stroke-opacity:.14;}
+.plate-outline{stroke-opacity:.55;}
+.plate-grid-major{stroke-opacity:.75;}
+.plate-grid-minor{stroke-opacity:.42;}
+.plate-calibration{border-top:1px solid #ffffff20;margin-top:25px;padding-top:25px;}
+.plate-calibration h2{font-size:22px;font-weight:400;letter-spacing:-.02em;margin:8px 0 10px;}
+.plate-calibration p{color:#aebfb1;font-size:12px;line-height:1.65;margin:0 0 13px;}
+.plate-sliders{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:22px;row-gap:8px;}
+.plate-sliders .theme-control{padding:13px 0 17px;}
+.plate-sliders .theme-control-head{margin-bottom:8px;}
+.plate-sliders .theme-control-title{font-size:12px;}
+.plate-sliders .theme-control-output{font-size:11px;}
+.plate-sliders .theme-range{margin:7px 0;}
+.plate-adjust-actions{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin-top:14px;}
+.plate-adjust-actions button{border:1px solid #ffffff2c;background:#ffffff09;color:#eaf2e8;border-radius:10px;padding:10px 13px;font-size:12px;cursor:pointer;}
+.plate-adjust-actions button:hover{background:#ffffff17;}
+.plate-adjust-actions .plate-primary{background:#dce9d7;color:#13241b;border-color:transparent;font-weight:600;}
+.plate-adjust-code{font-family:monospace;font-size:11px;color:#9fb7a5;overflow-wrap:anywhere;margin-top:14px;}
+.plate-tuner{position:fixed;right:18px;top:68px;width:min(316px,calc(100vw - 86px));max-height:calc(100vh - 82px);overflow:auto;z-index:50;padding:15px 17px 16px;border-radius:17px;background:#12211deF;box-shadow:0 17px 50px #000b;border:1px solid #ffffff30;backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);}
+.plate-tuner[hidden]{display:none!important;}
+.plate-tuner-header{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.plate-tuner-header h2{font-size:15px;font-weight:500;margin:0;}
+.plate-tuner-close{border:1px solid #ffffff26;border-radius:8px;background:#ffffff08;color:#e4eee1;min-width:32px;height:32px;font-size:17px;}
+.plate-tuner .plate-sliders{grid-template-columns:1fr;row-gap:0;}
+.plate-tuner .theme-control{padding:8px 0 11px;}
+.plate-tuner .theme-control-title{font-size:11px;}
+.plate-tuner .theme-control-head{margin-bottom:2px;}
+.plate-tuner .theme-range{height:5px;}
+.plate-tuner .theme-range::-webkit-slider-thumb{width:18px;height:18px;}
+.plate-tuner .plate-adjust-actions{margin-top:9px;}
+@media(max-width:850px){.weather-v22 .weather-hourly-chart-wrap{height:clamp(210px,30vh,260px);}.weather-v22 .weather-hourly-section{min-height:275px;} }
+@media(max-width:680px){.plate-sliders{grid-template-columns:1fr;}.plate-tuner{right:9px;top:56px;max-height:calc(100vh - 65px);}.weather-v22 .weather-hourly-chart-wrap{height:215px;} }
+
+
+/* v0.34 — FLAT CHARGE PLATE: independent fill/grid transparency and scalable 2D grid. */
+.turntable-stage .charge-plate-svg{opacity:1!important;filter:none!important;}
+.turntable-stage .charge-plate-svg .plate-base{opacity:.16;stroke-opacity:.20;}
+.turntable-stage .charge-plate-svg .plate-orange{opacity:var(--plate-orange-opacity,.25);}
+.turntable-stage .charge-plate-svg .plate-grid{opacity:var(--plate-grid-opacity,.75);}
+.turntable-stage .charge-plate-svg .plate-grid-major{stroke:#d1ddce;stroke-opacity:1;stroke-width:.85;}
+.turntable-stage .charge-plate-svg .plate-grid-minor{stroke:#d1ddce;stroke-opacity:.67;stroke-width:.7;}
+.turntable-stage .charge-plate-svg .plate-outline{stroke-opacity:.25;}
+.turntable-stage .charge-plate-svg .plate-marker{stroke-opacity:.78;stroke-width:1.8;}
+
 </style>
 </head>
 <body><div class="shell">
 <aside class="rail" aria-label="Navigation"><div class="brand">H.</div><button class="nav active" data-page="home" aria-label="Home" title="Home">⌂</button><button class="nav" data-page="weather" aria-label="Weather" title="Weather"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.1"/><path d="M12 1.7v2.4m0 15.8v2.4M1.7 12h2.4m15.8 0h2.4M4.7 4.7l1.7 1.7m11.2 11.2 1.7 1.7M19.3 4.7l-1.7 1.7M6.4 17.6l-1.7 1.7"/></svg></button><button class="nav" data-page="lights" aria-label="Lighting" title="Lighting"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6m-5 4h4m-5-7.3a7 7 0 1 1 6 0c-.7.6-1 1.3-1 2.3H10c0-1-.3-1.7-1-2.3Z"/></svg></button><button class="nav" data-page="vehicle" aria-label="Vehicle" title="Vehicle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11 7 5.8A2 2 0 0 1 8.9 4.5h6.2A2 2 0 0 1 17 5.8L19 11M5 17v2.5M19 17v2.5M4 11h16a1 1 0 0 1 1 1v5H3v-5a1 1 0 0 1 1-1Zm2 3.2h2m8 0h2"/></svg></button><button class="nav" data-page="settings" aria-label="Settings" title="Settings"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.4 2.8h3.2l.5 2.2 1.9.8 1.9-1.2 2.3 2.3-1.2 1.9.8 1.9 2.2.5v3.2l-2.2.5-.8 1.9 1.2 1.9-2.3 2.3-1.9-1.2-1.9.8-.5 2.2h-3.2l-.5-2.2-1.9-.8-1.9 1.2-2.3-2.3 1.2-1.9-.8-1.9-2.2-.5v-3.2l2.2-.5.8-1.9-1.2-1.9 2.3-2.3 1.9 1.2 1.9-.8.5-2.2Z"/><circle cx="12" cy="12" r="3.1"/></svg></button></aside>
-<main class="main"><header class="top"><span><strong>HOME</strong> / VAGGERYD</span><div class="top-meta"><span id="topdate">MONDAY 19 OCTOBER</span><span class="version-label" aria-label="HOME OS version 0.29">v0.31</span></div></header>
+<main class="main"><header class="top"><span><strong>HOME</strong> / VAGGERYD</span><div class="top-meta"><span id="topdate">MONDAY 19 OCTOBER</span><span class="version-label" aria-label="HOME OS version 0.34">v0.34</span></div></header>
 <section id="home" class="page visible"><div class="dashboard">
 <article class="panel hero"><div class="hero-main"><div class="eyebrow">Good to be home</div><div class="clock" id="clock">13:18</div><div class="date" id="fulldate">Monday 19 October</div></div>
 <div class="outside">
@@ -509,16 +572,16 @@ body{background:var(--os-root)}
   <div class="eyebrow">HOME OS / WEATHER · VAGGERYD</div>
   <div class="weather-title-row"><h1>Weather</h1><span id="weather-status" class="weather-status" aria-live="polite">Connecting…</span></div>
   <div class="weather-v22-now">
-    <button type="button" id="weather-select-temp" class="weather-temp-select weather-choice-active" data-weather-graph="temperature" aria-pressed="true" title="Show today's temperature graph"><span class="weather-reading-label">CURRENT TEMPERATURE <span class="weather-click-mark">↗</span></span><span class="weather-now-temp" id="weather-now-temp">—°</span><span class="weather-now-condition" id="weather-now-condition">Loading weather</span></button>
+    <button type="button" id="weather-select-temp" class="weather-temp-select weather-choice-active" data-weather-graph="temperature" aria-pressed="true" title="Show today's temperature graph"><span class="weather-reading-label">CURRENT TEMPERATURE </span><span class="weather-now-temp" id="weather-now-temp">—°</span><span class="weather-now-condition" id="weather-now-condition">Loading weather</span></button>
     <div class="weather-metrics weather-v22-metrics">
       <div class="weather-metric-info"><span>Feels like</span><strong id="weather-feels">—°</strong></div>
-      <button type="button" class="weather-metric-choice" data-weather-graph="humidity" aria-pressed="false" title="Show today's hourly humidity"><span>Humidity <span class="weather-click-mark">↗</span></span><strong id="weather-humidity">—%</strong></button>
-      <button type="button" class="weather-metric-choice" data-weather-graph="wind" aria-pressed="false" title="Show today's hourly wind speed"><span>Wind <span class="weather-click-mark">↗</span></span><strong id="weather-wind">— km/h</strong></button>
+      <button type="button" class="weather-metric-choice" data-weather-graph="humidity" aria-pressed="false" title="Show today's hourly humidity"><span>Humidity </span><strong id="weather-humidity">—%</strong></button>
+      <button type="button" class="weather-metric-choice" data-weather-graph="wind" aria-pressed="false" title="Show today's hourly wind speed"><span>Wind </span><strong id="weather-wind">— km/h</strong></button>
     </div>
   </div>
   <div class="weather-hourly-section">
     <div class="weather-hourly-top"><h2 id="weather-hourly-title">Temperature throughout today</h2><span id="weather-hourly-extremes">Hourly forecast</span></div>
-    <div class="weather-hourly-chart-wrap"><svg id="weather-hourly-chart" viewBox="0 0 640 140" preserveAspectRatio="none" role="img" aria-label="Waiting for hourly weather"></svg></div>
+    <div class="weather-hourly-chart-wrap"><svg id="weather-hourly-chart" viewBox="0 0 640 140" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Waiting for hourly weather"></svg></div>
     <div class="weather-hourly-ticks" aria-hidden="true"><span>00</span><span>06</span><span>12</span><span>18</span><span>23</span></div>
   </div>
   <div class="weather-five-day-section">
@@ -533,7 +596,24 @@ body{background:var(--os-root)}
   <div class="vehicle-v22-grid">
     <div class="vehicle-v22-visual">
       <div class="turntable-stage" id="vehicle-stage" tabindex="0" role="group" aria-label="Interactive Polestar 2 turntable. Drag left or right, or use arrow keys to rotate the car.">
-        <svg class="charge-plate-svg" id="charge-plate-svg" viewBox="-16 0 1032 238" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><defs><linearGradient id="plate-base-fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#111b19"/><stop offset="1" stop-color="#0b1513"/></linearGradient><linearGradient id="plate-orange-fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#ffaf39" stop-opacity=".87"/><stop offset="1" stop-color="#ed861b" stop-opacity=".78"/></linearGradient><linearGradient id="plate-moving-highlight" x1="0" x2="1"><stop offset="0" stop-color="#ffe0ad" stop-opacity="0"/><stop offset=".48" stop-color="#ffe8bf" stop-opacity=".55"/><stop offset="1" stop-color="#ffe0ad" stop-opacity="0"/></linearGradient><clipPath id="plate-clip"><path d="M 70 16 L 930 16 L 1000 176 L 0 176 Z"/></clipPath><clipPath id="plate-fill-clip"><path id="charge-plate-fill-clip" d="M 70 16 L 70 16 L 0 176 L 0 176 Z"/></clipPath></defs><path class="plate-base" d="M 70 16 L 930 16 L 1000 176 L 0 176 Z" fill="url(#plate-base-fill)"/><path id="charge-plate-fill" class="plate-orange" d="M 70 16 L 70 16 L 0 176 L 0 176 Z" fill="url(#plate-orange-fill)"/><g clip-path="url(#plate-fill-clip)"><rect class="plate-charge-sweep" x="-210" y="16" width="260" height="160" fill="url(#plate-moving-highlight)"/></g><g class="plate-grid" clip-path="url(#plate-clip)"><path d="M 113.00 16 L 50.00 176" class="plate-grid-minor"/><path d="M 156.00 16 L 100.00 176" class="plate-grid-major"/><path d="M 199.00 16 L 150.00 176" class="plate-grid-minor"/><path d="M 242.00 16 L 200.00 176" class="plate-grid-major"/><path d="M 285.00 16 L 250.00 176" class="plate-grid-minor"/><path d="M 328.00 16 L 300.00 176" class="plate-grid-major"/><path d="M 371.00 16 L 350.00 176" class="plate-grid-minor"/><path d="M 414.00 16 L 400.00 176" class="plate-grid-major"/><path d="M 457.00 16 L 450.00 176" class="plate-grid-minor"/><path d="M 500.00 16 L 500.00 176" class="plate-grid-major"/><path d="M 543.00 16 L 550.00 176" class="plate-grid-minor"/><path d="M 586.00 16 L 600.00 176" class="plate-grid-major"/><path d="M 629.00 16 L 650.00 176" class="plate-grid-minor"/><path d="M 672.00 16 L 700.00 176" class="plate-grid-major"/><path d="M 715.00 16 L 750.00 176" class="plate-grid-minor"/><path d="M 758.00 16 L 800.00 176" class="plate-grid-major"/><path d="M 801.00 16 L 850.00 176" class="plate-grid-minor"/><path d="M 844.00 16 L 900.00 176" class="plate-grid-major"/><path d="M 887.00 16 L 950.00 176" class="plate-grid-minor"/><path d="M 58.33 42.67 L 941.67 42.67" class="plate-grid-major"/><path d="M 46.67 69.33 L 953.33 69.33" class="plate-grid-major"/><path d="M 35.00 96.00 L 965.00 96.00" class="plate-grid-major"/><path d="M 23.33 122.67 L 976.67 122.67" class="plate-grid-major"/><path d="M 11.67 149.33 L 988.33 149.33" class="plate-grid-major"/></g><path class="plate-outline" d="M 70 16 L 930 16 L 1000 176 L 0 176 Z"/><path id="charge-plate-marker" class="plate-marker" d=""/><g id="charge-plate-scale" class="plate-scale"><g class="charge-scale-tick" data-value="10"><line x1="100" y1="184" x2="100" y2="193"/><text x="100" y="214">10</text></g><g class="charge-scale-tick" data-value="20"><line x1="200" y1="184" x2="200" y2="193"/><text x="200" y="214">20</text></g><g class="charge-scale-tick" data-value="30"><line x1="300" y1="184" x2="300" y2="193"/><text x="300" y="214">30</text></g><g class="charge-scale-tick" data-value="40"><line x1="400" y1="184" x2="400" y2="193"/><text x="400" y="214">40</text></g><g class="charge-scale-tick" data-value="50"><line x1="500" y1="184" x2="500" y2="193"/><text x="500" y="214">50</text></g><g class="charge-scale-tick" data-value="60"><line x1="600" y1="184" x2="600" y2="193"/><text x="600" y="214">60</text></g><g class="charge-scale-tick" data-value="70"><line x1="700" y1="184" x2="700" y2="193"/><text x="700" y="214">70</text></g><g class="charge-scale-tick" data-value="80"><line x1="800" y1="184" x2="800" y2="193"/><text x="800" y="214">80</text></g><g class="charge-scale-tick" data-value="90"><line x1="900" y1="184" x2="900" y2="193"/><text x="900" y="214">90</text></g><g class="charge-scale-tick" data-value="100"><line x1="1000" y1="184" x2="1000" y2="193"/><text x="1000" y="214">100</text></g></g></svg>
+        <svg class="charge-plate-svg" id="charge-plate-svg" viewBox="-16 0 1032 238" preserveAspectRatio="none" aria-hidden="true">
+<defs>
+<linearGradient id="plate-base-fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#111b19"/><stop offset="1" stop-color="#0b1513"/></linearGradient>
+<linearGradient id="plate-orange-fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#ffaf39"/><stop offset="1" stop-color="#ed861b"/></linearGradient>
+<linearGradient id="plate-moving-highlight" x1="0" x2="1"><stop offset="0" stop-color="#ffe0ad" stop-opacity="0"/><stop offset=".48" stop-color="#ffe8bf" stop-opacity=".55"/><stop offset="1" stop-color="#ffe0ad" stop-opacity="0"/></linearGradient>
+<clipPath id="plate-clip"><rect x="0" y="16" width="1000" height="160" rx="10"/></clipPath>
+<clipPath id="plate-fill-clip"><rect id="charge-plate-fill-clip" x="0" y="16" width="0" height="160"/></clipPath>
+</defs>
+<rect class="plate-base" x="0" y="16" width="1000" height="160" rx="10" fill="url(#plate-base-fill)"/>
+<g clip-path="url(#plate-clip)">
+<rect id="charge-plate-fill" class="plate-orange" x="0" y="16" width="0" height="160" fill="url(#plate-orange-fill)"/>
+<g clip-path="url(#plate-fill-clip)"><rect class="plate-charge-sweep" x="-210" y="16" width="260" height="160" fill="url(#plate-moving-highlight)"/></g>
+<g class="plate-grid"></g>
+</g>
+<rect class="plate-outline" x="0" y="16" width="1000" height="160" rx="10"/>
+<path id="charge-plate-marker" class="plate-marker" d=""/>
+<g id="charge-plate-scale" class="plate-scale"><g class="charge-scale-tick" data-value="10"><line x1="100" y1="184" x2="100" y2="193"/><text x="100" y="214">10</text></g><g class="charge-scale-tick" data-value="20"><line x1="200" y1="184" x2="200" y2="193"/><text x="200" y="214">20</text></g><g class="charge-scale-tick" data-value="30"><line x1="300" y1="184" x2="300" y2="193"/><text x="300" y="214">30</text></g><g class="charge-scale-tick" data-value="40"><line x1="400" y1="184" x2="400" y2="193"/><text x="400" y="214">40</text></g><g class="charge-scale-tick" data-value="50"><line x1="500" y1="184" x2="500" y2="193"/><text x="500" y="214">50</text></g><g class="charge-scale-tick" data-value="60"><line x1="600" y1="184" x2="600" y2="193"/><text x="600" y="214">60</text></g><g class="charge-scale-tick" data-value="70"><line x1="700" y1="184" x2="700" y2="193"/><text x="700" y="214">70</text></g><g class="charge-scale-tick" data-value="80"><line x1="800" y1="184" x2="800" y2="193"/><text x="800" y="214">80</text></g><g class="charge-scale-tick" data-value="90"><line x1="900" y1="184" x2="900" y2="193"/><text x="900" y="214">90</text></g><g class="charge-scale-tick" data-value="100"><line x1="1000" y1="184" x2="1000" y2="193"/><text x="1000" y="214">100</text></g></g>
+</svg>
         <div class="plate-demo-label" aria-hidden="true">CHARGING PREVIEW · DEMO</div>
         <canvas class="turntable-canvas" id="vehicle-turntable-canvas" width="960" height="540" aria-label="Polestar 2 360 degree turntable" hidden></canvas>
         <img class="turntable-image" id="vehicle-turntable" src="assets/turntable/Polestar-2-turntable_V2_0001.webp" alt="Polestar 2 rotating preview" draggable="false">
@@ -577,6 +657,15 @@ body{background:var(--os-root)}
   </div>
 </div>
 <div class="settings-footer"><button type="button" class="reset-theme" id="reset-appearance">Reset to original green</button><span class="theme-chip"><span class="theme-dot" aria-hidden="true"></span>Live preview · Saved locally</span></div>
+
+<section class="plate-calibration" aria-labelledby="plate-adjust-heading">
+  <div class="eyebrow">VEHICLE VISUALS</div><h2 id="plate-adjust-heading">2D charge plate</h2>
+  <p>Position the plate directly beneath your rendered Polestar. Changes update live and are saved on this device. Use <strong>Adjust on Vehicle</strong> to see the car while you move the sliders.</p>
+  <div class="plate-sliders" id="plate-sliders-settings"></div>
+  <div class="plate-adjust-actions"><button class="plate-primary" type="button" id="plate-open-tuner">Adjust on Vehicle ↗</button><button type="button" class="plate-reset">Reset plate</button><button type="button" class="plate-copy">Copy values</button></div>
+  <div class="plate-adjust-code" id="plate-values-settings">2D plate settings · Saved locally</div>
+</section>
+
 <section class="bridge-settings" aria-labelledby="bridge-title">
   <div class="bridge-top"><div><div class="eyebrow">CONNECTED SERVICES</div><h2 id="bridge-title">Polestar Cloud</h2></div><span class="bridge-state" id="polestar-settings-state" role="status">Not connected</span></div>
   <p class="bridge-description">Link your read-only Polestar bridge to HOME OS. Enter the <strong>HOME_OS_API_KEY</strong> you created in Render — never your Polestar password.</p>
@@ -591,7 +680,14 @@ body{background:var(--os-root)}
 <div class="weather-credits">Sources · Weather data: <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a> (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>). Car reference model: <a href="https://sketchfab.com/iori308408" target="_blank" rel="noopener noreferrer">Nieve5677</a> (CC BY 4.0).</div>
 <div style="margin-top:22px"><button class="back" data-page="home">← Home</button></div>
 </div></section>
-</main></div>
+</main>
+<aside class="plate-tuner" id="plate-tuner" hidden aria-label="Live charge plate alignment controls">
+  <div class="plate-tuner-header"><h2>Adjust charge plate</h2><button class="plate-tuner-close" type="button" id="plate-tuner-close" title="Close plate alignment" aria-label="Close plate alignment">×</button></div>
+  <p style="color:#a7bda9;font-size:11px;line-height:1.5;margin:7px 0 8px">Adjust the plate underneath the rotating car. Saved automatically.</p>
+  <div class="plate-sliders" id="plate-sliders-overlay"></div>
+  <div class="plate-adjust-actions"><button type="button" class="plate-reset">Reset</button><button type="button" class="plate-copy">Copy values</button><button class="plate-primary" type="button" id="plate-done">Done</button></div>
+</aside>
+</div>
 <script>
 (function(){function tick(){var d=new Date();document.getElementById('clock').textContent=d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});document.getElementById('fulldate').textContent=d.toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'});document.getElementById('topdate').textContent=d.toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'}).toUpperCase()}tick();setInterval(tick,15000);
 document.querySelectorAll('[data-scene]').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('[data-scene]').forEach(function(x){x.classList.remove('active')});b.classList.add('active');document.getElementById('scenestatus').textContent=b.dataset.scene+' selected · Demo only'})});
@@ -802,7 +898,7 @@ document.querySelectorAll('[data-page]').forEach(function(b){b.addEventListener(
     graphic.setAttribute('aria-label','Today, '+degrees(low)+' minimum and '+degrees(high)+' maximum. Hourly temperatures shown for selected times.');
   }
 
-  // HOME OS v0.31: interactive weather-detail hourly graph.
+  // HOME OS v0.34: interactive weather-detail hourly graph.
   var activeGraphMetric='temperature', lastWeatherData=null;
   var graphConfig={
     temperature:{key:'temperature_2m',title:'Temperature throughout today',unit:'°',extremeUnit:'°'},
@@ -1034,24 +1130,21 @@ document.querySelectorAll('[data-page]').forEach(function(b){b.addEventListener(
     return Math.floor(minutes/1440) + ' days ago';
   }
   function updateChargePlate(p){
-    var valid = Number.isFinite(p) && p >= 0 && p <= 100;
-    var ratio = valid ? p/100 : 0;
-    var xTop = 70 + 860*ratio;
-    var xBottom = 1000*ratio;
-    var path = 'M 70 16 L '+xTop.toFixed(2)+' 16 L '+xBottom.toFixed(2)+' 176 L 0 176 Z';
+    window.HOMEOS_plateLevel=p;
+    var valid=Number.isFinite(p)&&p>=0&&p<=100;
+    var width=valid?p*10:0;
     var fill=document.getElementById('charge-plate-fill');
     var clip=document.getElementById('charge-plate-fill-clip');
     var marker=document.getElementById('charge-plate-marker');
-    if(fill) fill.setAttribute('d',path);
-    if(clip) clip.setAttribute('d',path);
-    if(marker) marker.setAttribute('d', valid && p>0 ? 'M '+xTop.toFixed(2)+' 16 L '+xBottom.toFixed(2)+' 176' : '');
-    var nearest = valid && p>0 ? Math.max(10, Math.min(100,Math.round(p/10)*10)) : null;
-    var labels=document.querySelectorAll('#charge-plate-scale .charge-scale-tick');
-    for(var i=0;i<labels.length;i++){
-      var value=Number(labels[i].getAttribute('data-value'));
-      labels[i].classList.toggle('current',value===nearest);
-    }
+    if(fill)fill.setAttribute('width',String(width));
+    if(clip)clip.setAttribute('width',String(width));
+    if(marker)marker.setAttribute('d',valid&&p>0?'M '+width.toFixed(2)+' 16 V 176':'');
+    var nearest=valid&&p>0?Math.max(10,Math.min(100,Math.round(p/10)*10)):null;
+    document.querySelectorAll('#charge-plate-scale .charge-scale-tick').forEach(function(el){
+      el.classList.toggle('current',Number(el.getAttribute('data-value'))===nearest);
+    });
   }
+  window.HOMEOS_updateChargePlate=updateChargePlate;
   function setDisconnected(note) {
     current = null;
     text('car-home-status', 'NOT CONNECTED');
@@ -1237,8 +1330,119 @@ document.querySelectorAll('[data-page]').forEach(function(b){b.addEventListener(
 })();
 </script>
 
+
+
 <script>
-/* HOME OS v0.31 — time-based 25 fps canvas turntable; real WebP frames */
+/* HOME OS v0.34 — persistent 2D charge-plate adjustments. */
+(function(){
+ 'use strict';
+ var svg=document.getElementById('charge-plate-svg');
+ if(!svg)return;
+ var storageKey='homeos-plate-2d-v34';
+ var specs=[
+  {id:'width',name:'Width',min:65,max:150,step:1,defaultValue:91,suffix:' %'},
+  {id:'height',name:'Height',min:60,max:320,step:5,defaultValue:115,suffix:' px'},
+  {id:'x',name:'X position',min:-220,max:220,step:2,defaultValue:-2,suffix:' px'},
+  {id:'bottom',name:'Y position',min:-12,max:50,step:1,defaultValue:26,suffix:' %'},
+  {id:'orangeTransparency',name:'Orange fill transparency',min:0,max:100,step:1,defaultValue:75,suffix:' %'},
+  {id:'gridTransparency',name:'Grid transparency',min:0,max:100,step:1,defaultValue:25,suffix:' %'},
+  {id:'gridSize',name:'Grid size',min:10,max:40,step:2,defaultValue:20,suffix:''}
+ ];
+ var config={};specs.forEach(function(o){config[o.id]=o.defaultValue;});
+ function readSaved(key){try{return JSON.parse(localStorage.getItem(key)||'null');}catch(e){return null;}}
+ var saved=readSaved(storageKey);
+ if(saved){
+   specs.forEach(function(o){if(saved[o.id]!==null&&saved[o.id]!==undefined&&Number.isFinite(Number(saved[o.id])))config[o.id]=Math.min(o.max,Math.max(o.min,Number(saved[o.id])));});
+ }else{
+   // Preserve layout position/size from v0.33, but replace old opacity/perspective controls.
+   var prior=readSaved('homeos-plate-alignment-v33');
+   if(prior){['x','bottom','width','height'].forEach(function(key){var o=specs.find(function(v){return v.id===key;});if(Number.isFinite(Number(prior[key])))config[key]=Math.min(o.max,Math.max(o.min,Number(prior[key])));});}
+ }
+ var tuner=document.getElementById('plate-tuner');
+ function ns(tag){return document.createElementNS('http://www.w3.org/2000/svg',tag);}
+ function rows(){return Math.max(3,Math.round(config.gridSize*.3));}
+ function display(o){return o.id==='gridSize'?config.gridSize+' × '+rows():config[o.id]+o.suffix;}
+ function renderGrid(){
+   var grid=svg.querySelector('.plate-grid');if(!grid)return;
+   while(grid.firstChild)grid.removeChild(grid.firstChild);
+   var cols=config.gridSize;
+   // The main percentage divisions remain at 10%; the rest follow grid density.
+   for(var j=1;j<cols;j++){
+     var x=1000*j/cols,p=ns('path');
+     p.setAttribute('d','M '+x.toFixed(2)+' 16 V 176');
+     p.setAttribute('class',(Math.abs(x/100-Math.round(x/100))<.001)?'plate-grid-major':'plate-grid-minor');
+     grid.appendChild(p);
+   }
+   for(var r=1;r<rows();r++){
+     var y=16+160*r/rows(),h=ns('path');
+     h.setAttribute('d','M 0 '+y.toFixed(2)+' H 1000');
+     h.setAttribute('class','plate-grid-major');grid.appendChild(h);
+   }
+ }
+ function updateLabels(){
+   var out=document.getElementById('plate-values-settings');
+   if(out)out.textContent=JSON.stringify(config);
+   document.querySelectorAll('[data-plate-key]').forEach(function(inp){
+     var id=inp.dataset.plateKey,o=specs.find(function(s){return s.id===id;});
+     if(!o)return;
+     inp.value=config[id];
+     var output=document.getElementById(inp.id+'-out');if(output)output.textContent=display(o);
+   });
+ }
+ function apply(){
+   svg.style.setProperty('--plate-x',config.x+'px');
+   svg.style.setProperty('--plate-bottom',config.bottom+'%');
+   svg.style.setProperty('--plate-width',config.width+'%');
+   svg.style.setProperty('--plate-height',config.height+'px');
+   svg.style.setProperty('--plate-orange-opacity',String((100-config.orangeTransparency)/100));
+   svg.style.setProperty('--plate-grid-opacity',String((100-config.gridTransparency)/100));
+   renderGrid();updateLabels();
+   if(typeof window.HOMEOS_updateChargePlate==='function')window.HOMEOS_updateChargePlate(window.HOMEOS_plateLevel);
+ }
+ function save(){try{localStorage.setItem(storageKey,JSON.stringify(config));}catch(e){}}
+ specs.forEach(function(o){
+   ['settings','overlay'].forEach(function(surface){
+     var box=document.getElementById('plate-sliders-'+surface);if(!box)return;
+     var div=document.createElement('div');div.className='theme-control';
+     var header=document.createElement('div');header.className='theme-control-head';
+     var label=document.createElement('label');label.className='theme-control-title';
+     var id='plate-'+surface+'-'+o.id;label.setAttribute('for',id);label.textContent=o.name;
+     var output=document.createElement('output');output.className='theme-control-output';output.id=id+'-out';output.textContent=display(o);
+     header.appendChild(label);header.appendChild(output);
+     var slider=document.createElement('input');slider.className='theme-range';slider.type='range';slider.id=id;
+     slider.min=o.min;slider.max=o.max;slider.step=o.step;slider.value=config[o.id];slider.dataset.plateKey=o.id;
+     slider.setAttribute('aria-label',o.name+' for charge plate');
+     slider.addEventListener('input',function(){config[o.id]=Number(slider.value);apply();save();});
+     div.appendChild(header);div.appendChild(slider);box.appendChild(div);
+   });
+ });
+ function close(){if(tuner)tuner.hidden=true;}
+ document.getElementById('plate-open-tuner').addEventListener('click',function(){
+   var nav=document.querySelector('.nav[data-page="vehicle"]');if(nav)nav.click();
+   tuner.hidden=false;
+ });
+ document.getElementById('plate-tuner-close').addEventListener('click',close);
+ document.getElementById('plate-done').addEventListener('click',close);
+ document.querySelectorAll('[data-page]').forEach(function(nav){nav.addEventListener('click',close);});
+ document.querySelectorAll('.plate-reset').forEach(function(btn){btn.addEventListener('click',function(){
+   specs.forEach(function(o){config[o.id]=o.defaultValue;});apply();save();
+ });});
+ document.querySelectorAll('.plate-copy').forEach(function(btn){btn.addEventListener('click',function(){
+   var payload=JSON.stringify(config),original=btn.textContent;
+   if(navigator.clipboard&&navigator.clipboard.writeText){
+     navigator.clipboard.writeText(payload).then(function(){btn.textContent='Copied ✓';},function(){btn.textContent='Copy from Settings';});
+   }else{
+     var code=document.getElementById('plate-values-settings');if(code)code.textContent=payload;
+     btn.textContent='Shown in Settings';
+   }
+   setTimeout(function(){btn.textContent=original;},1800);
+ });});
+ apply();
+})();
+</script>
+
+<script>
+/* HOME OS v0.34 — progressive preload + continuous 12.5 fps turntable. */
 (function(){
  'use strict';
  var stage=document.getElementById('vehicle-stage');
@@ -1246,80 +1450,64 @@ document.querySelectorAll('[data-page]').forEach(function(b){b.addEventListener(
  var fallback=document.getElementById('vehicle-turntable');
  var page=document.getElementById('vehicle');
  if(!stage||!canvas||!fallback||!page)return;
- var ctx=canvas.getContext('2d',{alpha:true});
- if(!ctx)return;
- var count=72, fps=25, duration=1000/fps;
+ var ctx=canvas.getContext('2d',{alpha:true});if(!ctx)return;
+ var count=72, fps=12.5, stepMs=1000/fps;
  var base='assets/turntable/Polestar-2-turntable_V2_';
  var sources=(window.HOMEOS_PREVIEW_FRAMES&&window.HOMEOS_PREVIEW_FRAMES.length===count)
    ?window.HOMEOS_PREVIEW_FRAMES
    :Array.from({length:count},function(_,i){return base+String(i+1).padStart(4,'0')+'.webp';});
- var images=new Array(count),loadedCount=0,failures=0;
- var started=false,ready=false,dragging=false,lastX=0,dragPixels=0;
- var index=0,elapsed=0,previousTime=0,raf=0;
+ var images=new Array(count),available=new Array(count).fill(false);
+ var index=0,ready=false,failures=0,dragging=false,lastX=0,dragPixels=0;
+ var elapsed=0,previousTime=0,raf=0,lastPainted=-1;
  var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
  var label=document.getElementById('turntable-position');
+ var pending=0,nextToLoad=0,completed=0;
  function visible(){return !document.hidden&&page.classList.contains('visible');}
- function draw(i){
-   if(!ready||!images[i])return;
-   index=(i+count)%count;
-   ctx.clearRect(0,0,canvas.width,canvas.height);
-   ctx.drawImage(images[index],0,0,canvas.width,canvas.height);
-   if(label)label.textContent='VIEW '+String(index+1).padStart(2,'0')+' / '+count;
- }
- function startPreload(){
-   if(started)return;
-   started=true;
-   var next=0,finished=0,simultaneous=4;
-   function loadNext(){
-     if(next>=count)return;
-     var n=next++;
-     var image=new Image();
-     images[n]=image;
-     image.onload=function(){
-       // Decode before playback to avoid spikes when advancing frames.
-       var decoded=image.decode?image.decode().catch(function(){return; }):Promise.resolve();
-       decoded.then(function(){done(true);});
-     };
-     image.onerror=function(){done(false);};
-     function done(ok){
-       finished++;
-       if(ok)loadedCount++;else failures++;
-       if(next<count)loadNext();
-       if(finished===count){
-         if(loadedCount===count){
-           ready=true;
-           fallback.hidden=true;
-           canvas.hidden=false;
-           stage.classList.remove('is-fallback');
-           draw(index);
-           previousTime=0;
-         }else{
-           canvas.hidden=true;
-           fallback.hidden=false;
-           if(label)label.textContent='TURNTABLE UNAVAILABLE';
-         }
-       }
-     }
-     image.src=sources[n];
+ function draw(n){
+   var candidate=(n+count)%count;
+   if(!available[candidate])return false;
+   index=candidate;
+   if(lastPainted!==candidate){
+     try{ctx.clearRect(0,0,canvas.width,canvas.height);ctx.drawImage(images[candidate],0,0,canvas.width,canvas.height);}
+     catch(e){return false;}
+     lastPainted=candidate;
    }
-   for(var n=0;n<simultaneous;n++)loadNext();
+   if(label)label.textContent='VIEW '+String(index+1).padStart(2,'0')+' / '+count;
+   return true;
  }
+ function useCanvas(){
+   if(!available[0]||!available[1]||ready)return;
+   ready=true;
+   fallback.hidden=true;canvas.hidden=false;stage.classList.remove('is-fallback');
+   draw(0);previousTime=0;
+ }
+ function loadMore(){
+   while(pending<7&&nextToLoad<count){
+     (function(i){
+       var pic=new Image();pending++;images[i]=pic;
+       pic.onload=function(){
+         var decoded=pic.decode?pic.decode().catch(function(){return;}):Promise.resolve();
+         decoded.then(function(){
+           available[i]=true;pending--;completed++;useCanvas();loadMore();
+         });
+       };
+       pic.onerror=function(){pending--;completed++;failures++;loadMore();};
+       pic.src=sources[i];
+     })(nextToLoad++);
+   }
+ }
+ // Start buffering as soon as HOME OS loads, not when opening the Vehicle tab.
+ // The first two frames are enough to begin; we never wait for all 72.
+ loadMore();
  function loop(timestamp){
    raf=requestAnimationFrame(loop);
-   if(!visible()){
-     previousTime=0;
-     return;
-   }
-   if(!started)startPreload();
+   if(!visible()){previousTime=0;return;}
    if(!ready||dragging||reduced){previousTime=timestamp;return;}
    if(!previousTime){previousTime=timestamp;return;}
-   var dt=Math.min(250,timestamp-previousTime);
+   elapsed=Math.min(stepMs,elapsed+Math.min(200,timestamp-previousTime));
    previousTime=timestamp;
-   elapsed+=dt;
-   if(elapsed>=duration){
-     var steps=Math.floor(elapsed/duration);
-     elapsed=elapsed%duration;
-     draw((index+steps)%count);
+   if(elapsed>=stepMs){
+     if(draw(index+1))elapsed=0; // do not skip unloaded images
    }
  }
  function begin(x){dragging=true;lastX=x;dragPixels=0;elapsed=0;previousTime=0;stage.classList.add('is-dragging');}
@@ -1328,7 +1516,12 @@ document.querySelectorAll('[data-page]').forEach(function(b){b.addEventListener(
    dragPixels+=x-lastX;lastX=x;
    var sensitivity=Math.max(6,Math.min(14,stage.clientWidth/65));
    var n=Math.trunc(dragPixels/sensitivity);
-   if(n!==0){draw((index-n+count*50)%count);dragPixels-=n*sensitivity;}
+   if(n){
+     var target=(index-n+count*10)%count;
+     // In practice all frames finish buffering shortly after page load.
+     if(available[target])draw(target);
+     dragPixels-=n*sensitivity;
+   }
  }
  function end(){if(!dragging)return;dragging=false;elapsed=0;previousTime=0;stage.classList.remove('is-dragging');}
  stage.addEventListener('mousedown',function(e){if(e.button===0){e.preventDefault();begin(e.clientX);}});
@@ -1336,20 +1529,21 @@ document.querySelectorAll('[data-page]').forEach(function(b){b.addEventListener(
  document.addEventListener('mouseup',end);
  stage.addEventListener('touchstart',function(e){if(e.touches.length===1)begin(e.touches[0].clientX);},{passive:true});
  stage.addEventListener('touchmove',function(e){if(dragging&&e.touches.length===1){move(e.touches[0].clientX);e.preventDefault();}},{passive:false});
- stage.addEventListener('touchend',end);
- stage.addEventListener('touchcancel',end);
+ stage.addEventListener('touchend',end);stage.addEventListener('touchcancel',end);
  stage.addEventListener('keydown',function(e){
-   if((e.key==='ArrowLeft'||e.key==='ArrowRight')&&ready){e.preventDefault();draw((index+(e.key==='ArrowRight'?1:-1)+count)%count);elapsed=0;previousTime=0;}
+   if(e.key==='ArrowLeft'||e.key==='ArrowRight'){
+     var target=(index+(e.key==='ArrowRight'?1:-1)+count)%count;
+     if(ready&&available[target]){e.preventDefault();draw(target);elapsed=0;previousTime=0;}
+   }
  });
- // A single fallback frame remains if the full stack is missing.
  fallback.addEventListener('error',function(){
    if(fallback.getAttribute('src')!=='assets/polestar-2-top.png'){
-     fallback.setAttribute('src','assets/polestar-2-top.png');
-     stage.classList.add('is-fallback');
+     fallback.setAttribute('src','assets/polestar-2-top.png');stage.classList.add('is-fallback');
    }
  });
  document.addEventListener('visibilitychange',function(){previousTime=0;});
  raf=requestAnimationFrame(loop);
 })();
 </script>
+
 </body></html>
