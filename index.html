@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080e0c">
-<title>HOME OS — v0.19</title>
+<title>HOME OS — v0.21</title>
 <style>
 :root{--os-root:#080e0c;--os-accent:#d7e5d2;--os-hero-a:#284337;--os-hero-b:#1c3229;--os-hero-c:#14251e;--os-hero-d:#102019;--os-scenes-a:#192b22;--os-scenes-b:#15251e;--os-scene:#24382d;--os-scene-hover:#304638;--os-forecast-a:#172920;--os-forecast-b:#192a23;--os-forecast-c:#14241d;--os-car-a:#2b3c32;--os-car-b:#1b2b23;--os-car-c:#17271f;--os-bar:#3c5042;--os-fill:#cce2c5;--os-detail:#172920;--os-vehicle-a:#284036;--os-vehicle-b:#15251e;--os-vehicle-c:#101d17;--os-track:#415648;--os-weekday:#2b4033;--os-time:#293e31;--os-demo-color:#446957;font-family:Inter,"Segoe UI",Arial,sans-serif;color:#edf3ec;background:var(--os-root);--grain-opacity:0;--text:#edf3ec;--muted:#a5b9aa;--line:#ffffff16;--card:#15251e}
 *{box-sizing:border-box}body{margin:0}button{font:inherit;cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid #d4e5cf;outline-offset:3px}
@@ -154,14 +154,68 @@ body{background:var(--os-root)}
 .bridge-result{font-size:12px;min-height:18px;color:#bcd7c0;line-height:1.6;max-width:590px}
 .bridge-footnote{border-top:1px solid #ffffff18;padding-top:13px;margin-top:22px;color:#95b39d;font-size:11px;line-height:1.65}
 @media(max-width:720px){.bridge-settings{padding-top:22px;margin-top:24px}}
+
+/* v0.21 · Relaxed battery numerals, hourly weather and turntable-ready vehicle layout. */
+/* The battery reading contains two spans: digits must remain full size, only % shrinks. */
+.percentage > span:first-child,.vehicle-soc > span:first-child {font-size:1em;display:inline-block;}
+.percentage > span:last-child,.vehicle-soc > span:last-child{font-size:.42em;vertical-align:baseline;}
+.car-graphic{height:57%;max-height:225px;top:42%;}
+@media(max-width:1100px){.car-graphic{height:54%;max-height:205px;top:42%;}}
+@media(max-width:720px){.car-graphic{height:56%;max-height:205px;top:42%;}}
+
+.percentage,.vehicle-soc {letter-spacing: -.015em; font-variant-numeric: tabular-nums;white-space:nowrap;}
+.percentage span,.vehicle-soc span {letter-spacing:0;}
+.percentage span:last-child,.vehicle-soc span:last-child {display:inline-block;margin-left:.07em;}
+.outside {display:grid;grid-template-columns:max-content minmax(0,1fr);align-items:end;gap:clamp(22px,3.5vw,65px);width:100%;}
+.outside-reading{min-width:0;}
+.today-graph {min-width:0;max-width:690px;align-self:end;padding-bottom:4px;color:#b7cbbb;width:100%;}
+.today-heading{display:flex;justify-content:flex-end;align-items:center;gap:10px;font-size:10px;letter-spacing:1.1px;color:#a8bdad;white-space:nowrap;min-height:14px;}
+.today-extremes{font-variant-numeric:tabular-nums;letter-spacing:.35px;color:#dce9d8;text-transform:none;}
+.today-plot{height:clamp(82px,10.6vw,136px);margin-top:5px;}
+.today-plot svg{height:100%;width:100%;overflow:visible;display:block;}
+.today-hours{display:flex;align-items:center;justify-content:space-between;gap:6px;padding:0 2px 0 0;font-variant-numeric:tabular-nums;font-size:10px;color:#a5bcaa;letter-spacing:.3px;margin-top:3px;}
+.today-hour-point{fill:#ebf4e8;}
+.today-hour-ring{fill:#e5efe1;fill-opacity:.08;stroke:#eef7ec;stroke-opacity:.18;}
+.today-hour-label{fill:#eaf3e7;font-size:12px;font-weight:500;letter-spacing:.2px;font-variant-numeric:tabular-nums;text-anchor:middle;}
+.today-current-guide{stroke:#edf5ea;stroke-opacity:.22;stroke-dasharray:3 4;}
+.today-current-dot{fill:#f4fbf1;}
+.today-current-halo{fill:#e8f2e4;fill-opacity:.08;}
+.vehicle-page{grid-template-columns:minmax(0,1.75fr) minmax(240px,.7fr);}
+.vehicle-controls{justify-content:center;}
+.vehicle-controls .vehicle-card{padding:clamp(20px,2vw,30px);}
+.vehicle-controls .vehicle-stat-row strong{font-size:clamp(14px,1.4vw,18px);font-weight:500;}
+@media(max-width:1100px){
+ .outside{gap:22px;}
+ .today-heading{font-size:9px;letter-spacing:.7px;}
+ .today-plot{height:88px;}
+}
+@media(max-width:850px){
+ .vehicle-page{grid-template-columns:1fr;}
+ .vehicle-controls{justify-content:stretch;}
+ .today-plot{height:90px;}
+}
+@media(max-width:720px){
+ .hero{min-height:480px;}
+ .outside{grid-template-columns:1fr;gap:20px;align-items:stretch;}
+ .today-graph{max-width:none;width:100%;padding-bottom:0;}
+ .today-plot{height:96px;}
+ .today-heading{font-size:10px;}
+}
+
 </style>
 </head>
 <body><div class="shell">
 <aside class="rail" aria-label="Navigation"><div class="brand">H.</div><button class="nav active" data-page="home" aria-label="Home" title="Home">⌂</button><button class="nav" data-page="weather" aria-label="Weather" title="Weather"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.1"/><path d="M12 1.7v2.4m0 15.8v2.4M1.7 12h2.4m15.8 0h2.4M4.7 4.7l1.7 1.7m11.2 11.2 1.7 1.7M19.3 4.7l-1.7 1.7M6.4 17.6l-1.7 1.7"/></svg></button><button class="nav" data-page="lights" aria-label="Lighting" title="Lighting"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6m-5 4h4m-5-7.3a7 7 0 1 1 6 0c-.7.6-1 1.3-1 2.3H10c0-1-.3-1.7-1-2.3Z"/></svg></button><button class="nav" data-page="vehicle" aria-label="Vehicle" title="Vehicle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11 7 5.8A2 2 0 0 1 8.9 4.5h6.2A2 2 0 0 1 17 5.8L19 11M5 17v2.5M19 17v2.5M4 11h16a1 1 0 0 1 1 1v5H3v-5a1 1 0 0 1 1-1Zm2 3.2h2m8 0h2"/></svg></button><button class="nav" data-page="settings" aria-label="Settings" title="Settings"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.4 2.8h3.2l.5 2.2 1.9.8 1.9-1.2 2.3 2.3-1.2 1.9.8 1.9 2.2.5v3.2l-2.2.5-.8 1.9 1.2 1.9-2.3 2.3-1.9-1.2-1.9.8-.5 2.2h-3.2l-.5-2.2-1.9-.8-1.9 1.2-2.3-2.3 1.2-1.9-.8-1.9-2.2-.5v-3.2l2.2-.5.8-1.9-1.2-1.9 2.3-2.3 1.9 1.2 1.9-.8.5-2.2Z"/><circle cx="12" cy="12" r="3.1"/></svg></button></aside>
-<main class="main"><header class="top"><span><strong>HOME</strong> / VAGGERYD</span><div class="top-meta"><span id="topdate">MONDAY 19 OCTOBER</span><span class="version-label" aria-label="HOME OS version 0.19">v0.19</span></div></header>
+<main class="main"><header class="top"><span><strong>HOME</strong> / VAGGERYD</span><div class="top-meta"><span id="topdate">MONDAY 19 OCTOBER</span><span class="version-label" aria-label="HOME OS version 0.20">v0.21</span></div></header>
 <section id="home" class="page visible"><div class="dashboard">
 <article class="panel hero"><div class="hero-main"><div class="eyebrow">Good to be home</div><div class="clock" id="clock">13:18</div><div class="date" id="fulldate">Monday 19 October</div></div>
-<div class="outside"><div><div class="eyebrow" id="weather-eyebrow">Outside · Connecting…</div><div class="temp" id="current-temp">—°</div><div class="condition" id="current-condition">Loading weather</div></div><div class="weather-icon" id="current-icon" aria-hidden="true"><svg viewBox="0 0 140 110" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="87" cy="36" r="20" stroke="#e6e1c5" stroke-width="1.4"/><g stroke="#e6e1c5" stroke-width="1.4" stroke-linecap="round"><path d="M87 7V1M87 71v-6M58 36h-6M122 36h-6M66 15l-5-5M108 15l5-5"/></g><path d="M31 86h80c12 0 21-9 21-20 0-12-10-21-22-21-4 0-8 1-11 3-8-16-22-24-39-24-23 0-41 16-44 36C6 60 1 68 1 77c0 5 2 8 5 11" stroke="#e4eee0" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M35 98h72" stroke="#e4eee0" stroke-opacity=".35" stroke-width="1"/></svg></div></div></article>
+<div class="outside">
+<div class="outside-reading"><div class="eyebrow" id="weather-eyebrow">Outside · Connecting…</div><div class="temp" id="current-temp">—°</div><div class="condition" id="current-condition">Loading weather</div></div>
+<div class="today-graph" aria-label="Hourly temperature forecast for today">
+  <div class="today-heading"><span class="today-extremes" id="today-extremes">Hourly forecast</span></div>
+  <div class="today-plot"><svg id="today-temperature-chart" viewBox="0 0 640 140" preserveAspectRatio="none" role="img" aria-label="Waiting for today's hourly temperatures"></svg></div>
+  <div class="today-hours" aria-hidden="true"><span>00</span><span>06</span><span>12</span><span>18</span><span>23</span></div>
+</div></div></article>
 <article class="panel scenes"><div class="heading"><h2>Lighting moods</h2><span class="muted">PLEJD · DEMO</span></div><div class="scene-grid"><button class="scene" data-scene="Morning"><span class="scene-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.1"/><path d="M12 1.7v2.4m0 15.8v2.4M1.7 12h2.4m15.8 0h2.4M4.7 4.7l1.7 1.7m11.2 11.2 1.7 1.7M19.3 4.7l-1.7 1.7M6.4 17.6l-1.7 1.7"/></svg></span><span class="scene-name">Morning</span></button><button class="scene active" data-scene="Evening"><span class="scene-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.3"/><path d="M12 3.7v16.6"/><path d="M12 3.7a8.3 8.3 0 0 1 0 16.6Z" fill="currentColor" fill-opacity=".14" stroke="none"/></svg></span><span class="scene-name">Evening</span></button><button class="scene" data-scene="Cozy"><span class="scene-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5L12 2Z"/></svg></span><span class="scene-name">Cozy</span></button><button class="scene" data-scene="All off"><span class="scene-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 15.3A8.7 8.7 0 0 1 8.7 3.5 8.8 8.8 0 1 0 20.5 15.3Z"/></svg></span><span class="scene-name">All off</span></button></div><div class="status" id="scenestatus" aria-live="polite">Evening selected · Demo only</div></article>
 <article class="panel forecast"><div class="heading"><h2>Next few days</h2><details class="source-info" id="forecast-source"><summary title="Weather data source" aria-label="Weather data attribution"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8.1v.2"/></svg></summary><div class="source-popover">Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>. Temperatures are rounded and displayed in a custom forecast.</div></details></div><div class="forecast-plot"><svg id="forecast-chart" viewBox="0 0 1000 150" preserveAspectRatio="none" role="img" aria-label="Waiting for forecast"></svg></div>
 <div class="days" id="forecast-days" aria-live="polite"><div class="day"><span>—</span><span class="sym"></span><strong>—°</strong></div><div class="day"><span>—</span><span class="sym"></span><strong>—°</strong></div><div class="day"><span>—</span><span class="sym"></span><strong>—°</strong></div><div class="day"><span>—</span><span class="sym"></span><strong>—°</strong></div><div class="day"><span>—</span><span class="sym"></span><strong>—°</strong></div></div>
@@ -176,13 +230,12 @@ body{background:var(--os-root)}
   <div class="weather-details-head"><h2>Next five days</h2><span class="weather-subtle">Daily highs & lows</span></div>
   <div class="weather-detail-days" id="weather-detail-days" aria-live="polite"><span class="weather-subtle">Waiting for forecast…</span></div>
   <div class="weather-footer"><details class="source-info"><summary title="Weather data source" aria-label="Weather data attribution"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8.1v.2"/></svg></summary><div class="source-popover">Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>. Temperatures are rounded and displayed in a custom forecast.</div></details><button type="button" class="weather-refresh" id="weather-refresh">↻ Refresh weather</button></div>
-  <button class="back" data-page="home">← Home</button>
 </div></section>
-<section class="page" id="lights"><div class="detail"><div class="eyebrow">HOME OS / LIGHTING</div><h1>Lighting</h1><p>Your four lighting moods can be selected from the home screen. They are currently simulated and do not control Plejd.</p><button class="back" data-page="home">← Home</button></div></section>
+<section class="page" id="lights"><div class="detail"><div class="eyebrow">HOME OS / LIGHTING</div><h1>Lighting</h1><p>Your four lighting moods can be selected from the home screen. They are currently simulated and do not control Plejd.</p></div></section>
 <section class="page" id="vehicle"><div class="vehicle-page">
 <div class="vehicle-visual"><div class="eyebrow">HOME OS / VEHICLE</div><h1 class="vehicle-title">Polestar 2</h1><div class="vehicle-sub" id="vehicle-subtitle">Connect your car in Settings</div><div class="vehicle-image-wrap vehicle-stage" id="vehicle-stage"><img class="vehicle-image" src="assets/polestar-2-top.png" alt="Black Polestar 2 from above"></div>
-<div class="vehicle-stat-row"><div class="vehicle-soc"><span id="vehicle-soc">—</span><span>%</span></div><div class="vehicle-stat-label"><span id="vehicle-main-status">NOT CONNECTED</span><br><span id="vehicle-main-power">— kW</span></div></div><div class="vehicle-track"><span id="vehicle-battery-fill" style="width:0%"></span></div><p class="vehicle-foot" id="vehicle-data-age" aria-live="polite">Connect the bridge in Settings to see your car's status.</p><div class="vehicle-status-actions"><button class="vehicle-refresh" type="button" id="polestar-refresh">↻ Refresh vehicle</button><button class="vehicle-settings-link" type="button" data-page="settings">Connection settings ↗</button></div><button class="back vehicle-back" data-page="home">← Home</button></div>
-<div class="vehicle-controls"><div class="vehicle-card"><div class="overline">CLIMATE / DEPARTURE</div><h2 style="margin-top:12px">Departure schedule</h2><div class="departure-time" id="departure-display">07:30</div><p>Set when you'd like the car ready. This is a local interface demo and does not update your Polestar.</p><div class="vehicle-form-row"><label for="departure-input">Departure time</label><input id="departure-input" type="time" value="07:30"></div><div class="weekdays" aria-label="Repeat on weekdays"><button class="weekday selected" data-weekday="M" aria-pressed="true">M</button><button class="weekday selected" data-weekday="Tu" aria-pressed="true">T</button><button class="weekday selected" data-weekday="W" aria-pressed="true">W</button><button class="weekday selected" data-weekday="Th" aria-pressed="true">T</button><button class="weekday selected" data-weekday="F" aria-pressed="true">F</button><button class="weekday" data-weekday="Sa" aria-pressed="false">S</button><button class="weekday" data-weekday="Su" aria-pressed="false">S</button></div><div class="vehicle-form-row"><input id="departure-enabled" type="checkbox" checked><label for="departure-enabled">Enable schedule (demo)</label></div><button class="vehicle-action" id="save-departure">Save demo schedule</button><div id="departure-message" class="vehicle-message" aria-live="polite"></div></div><div class="vehicle-card"><div class="overline">VEHICLE STATUS</div><h2 style="margin-top:12px">Charging overview</h2><div class="vehicle-stat-row"><span class="vehicle-foot">Battery</span><strong id="vehicle-battery-detail">—</strong></div><div class="vehicle-stat-row" style="margin-top:15px"><span class="vehicle-foot">Estimated range</span><strong id="vehicle-range-detail">—</strong></div><div class="vehicle-stat-row" style="margin-top:15px"><span class="vehicle-foot">Charging power</span><strong id="vehicle-power-detail">—</strong></div><div class="vehicle-stat-row" style="margin-top:15px"><span class="vehicle-foot">Status</span><strong id="vehicle-status-detail">Not connected</strong></div><p class="vehicle-foot" id="vehicle-updated-detail" aria-live="polite">Read-only information from Polestar Cloud.</p></div></div>
+<div class="vehicle-stat-row"><div class="vehicle-soc"><span id="vehicle-soc">—</span><span>%</span></div><div class="vehicle-stat-label"><span id="vehicle-main-status">NOT CONNECTED</span><br><span id="vehicle-main-power">— kW</span></div></div><div class="vehicle-track"><span id="vehicle-battery-fill" style="width:0%"></span></div><p class="vehicle-foot" id="vehicle-data-age" aria-live="polite">Connect the bridge in Settings to see your car's status.</p><div class="vehicle-status-actions"><button class="vehicle-icon-btn" type="button" id="polestar-refresh" aria-label="Refresh vehicle data" title="Refresh vehicle data">↻</button></div></div>
+<div class="vehicle-controls"><div class="vehicle-card vehicle-status-card"><div class="overline">VEHICLE STATUS</div><h2 style="margin-top:12px">Vehicle details</h2><div class="detail-rows"><div class="vehicle-detail-row"><span>Battery</span><strong id="vehicle-battery-detail">—</strong></div><div class="vehicle-detail-row"><span>Estimated range</span><strong id="vehicle-range-detail">—</strong></div><div class="vehicle-detail-row"><span>Charging power</span><strong id="vehicle-power-detail">—</strong></div><div class="vehicle-detail-row"><span>Status</span><strong id="vehicle-status-detail">Not connected</strong></div></div><p class="vehicle-right-note" id="vehicle-updated-detail" aria-live="polite">Read-only information from Polestar Cloud.</p></div></div>
 </div></section>
 <section class="page" id="settings"><div class="detail settings-panel">
 <div class="eyebrow">HOME OS / SETTINGS</div><h1>Appearance</h1>
@@ -298,18 +351,12 @@ document.querySelectorAll('[data-page]').forEach(function(b){b.addEventListener(
   render();
 })();
 
-(function(){
-var time=document.getElementById('departure-input'),display=document.getElementById('departure-display'),enabled=document.getElementById('departure-enabled'),msg=document.getElementById('departure-message'),days=[].slice.call(document.querySelectorAll('.weekday'));
-try{var saved=JSON.parse(localStorage.getItem('homeos-departure-demo')||'null');if(saved&&/^([01]\d|2[0-3]):[0-5]\d$/.test(saved.time)){time.value=saved.time;display.textContent=saved.time;enabled.checked=!!saved.enabled;days.forEach(function(b,i){var on=!!saved.days[i];b.classList.toggle('selected',on);b.setAttribute('aria-pressed',String(on))})}}catch(e){}
-days.forEach(function(b){b.addEventListener('click',function(){var on=!b.classList.contains('selected');b.classList.toggle('selected',on);b.setAttribute('aria-pressed',String(on))})});
-document.getElementById('save-departure').addEventListener('click',function(){if(!/^([01]\d|2[0-3]):[0-5]\d$/.test(time.value)){msg.textContent='Choose a valid time.';return}display.textContent=time.value;var data={time:time.value,enabled:enabled.checked,days:days.map(function(b){return b.classList.contains('selected')})};try{localStorage.setItem('homeos-departure-demo',JSON.stringify(data));msg.textContent='Demo schedule saved on this device — not sent to your car.'}catch(e){msg.textContent='Demo updated for this session — not sent to your car.'}});
-})();
 </script>
 <script>
 /* v0.16 — live weather from Open-Meteo. No API keys or local bridge required. */
 (function(){
   'use strict';
-  var API='https://api.open-meteo.com/v1/forecast?latitude=57.498&longitude=14.148&current=temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,weather_code,is_day&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&forecast_days=6&timezone=Europe%2FStockholm';
+  var API='https://api.open-meteo.com/v1/forecast?latitude=57.498&longitude=14.148&current=temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,weather_code,is_day&hourly=temperature_2m&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&forecast_days=6&timezone=Europe%2FStockholm';
   var cacheKey='homeos-weather-v1', refreshMs=20*60*1000, inFlight=false, updatedAt=0;
   var $=function(id){return document.getElementById(id)};
   var escapeHTML=function(value){return String(value).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]});};
@@ -366,13 +413,88 @@ document.getElementById('save-departure').addEventListener('click',function(){if
     $('forecast-chart').innerHTML='<defs><linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d0e0cb" stop-opacity=".11"/><stop offset="1" stop-color="#d0e0cb" stop-opacity="0"/></linearGradient></defs><path d="'+bottom+'" fill="url(#fade)"/><path d="'+path+'" stroke="#d3e3ce" stroke-width="1.8" vector-effect="non-scaling-stroke" fill="none"/><g stroke="#d3e3ce" stroke-opacity=".17" stroke-dasharray="2 4">'+guides+'</g><g fill="#e6f0e2">'+dots+'</g>';
     $('forecast-chart').setAttribute('aria-label','Daily high temperatures: '+values.map(degrees).join(', '));
   }
+
+  function drawToday(data){
+    var graphic=$("today-temperature-chart"), caption=$("today-extremes");
+    var hourly=data.hourly;
+    var today=data.current&&data.current.time?String(data.current.time).slice(0,10):'';
+    var times=hourly&&hourly.time, temps=hourly&&hourly.temperature_2m;
+    var readings=[];
+    if(Array.isArray(times)&&Array.isArray(temps)&&times.length===temps.length){
+      for(var i=0;i<times.length;i++){
+        if(String(times[i]).slice(0,10)===today && temps[i]!==null && isFinite(Number(temps[i]))){
+          readings.push({hour:Number(String(times[i]).slice(11,13)),value:Number(temps[i])});
+        }
+      }
+    }
+    if(readings.length<12){
+      graphic.innerHTML='';
+      graphic.setAttribute('aria-label',"Hourly forecast is not available yet");
+      caption.textContent='';
+      return;
+    }
+    var low=Math.min.apply(null,readings.map(function(p){return p.value;}));
+    var high=Math.max.apply(null,readings.map(function(p){return p.value;}));
+    caption.textContent='H '+degrees(high)+' · L '+degrees(low);
+    var floor=low-1.8, ceiling=high+1.8;
+    if(ceiling-floor<4){floor=(high+low)/2-2.2;ceiling=floor+4.4;}
+    var padL=10,padR=10,padTop=20,padBottom=20;
+    function point(p){return {x:padL+(p.hour/23)*(640-padL-padR),y:padTop+(ceiling-p.value)/(ceiling-floor)*(140-padTop-padBottom)};}
+    var smoothReadings=readings.map(function(r,idx){
+      var sum=0,count=0;
+      for(var a=Math.max(0,idx-1);a<=Math.min(readings.length-1,idx+1);a++){sum+=readings[a].value;count++;}
+      return {hour:r.hour,value:sum/count};
+    });
+    var pts=smoothReadings.map(point);
+    var d='M '+pts[0].x.toFixed(2)+' '+pts[0].y.toFixed(2);
+    for(var j=1;j<pts.length;j++){
+      var prev=pts[j-1], curr=pts[j], next=pts[j+1]||curr, prevPrev=pts[j-2]||prev;
+      var cp1x=prev.x + (curr.x - prevPrev.x) / 6;
+      var cp1y=prev.y + (curr.y - prevPrev.y) / 6;
+      var cp2x=curr.x - (next.x - prev.x) / 6;
+      var cp2y=curr.y - (next.y - prev.y) / 6;
+      d+=' C '+cp1x.toFixed(2)+' '+cp1y.toFixed(2)+' '+cp2x.toFixed(2)+' '+cp2y.toFixed(2)+' '+curr.x.toFixed(2)+' '+curr.y.toFixed(2);
+    }
+    var guideHours=[0,6,9,12,18,23];
+    var guides=guideHours.map(function(hour){
+      var x=(padL+hour/23*(640-padL-padR)).toFixed(2);
+      return '<path d="M'+x+' 8 V132"/>';
+    }).join('');
+    var labelHours=[0,6,9,12,18,23].filter(function(h){return readings.some(function(r){return r.hour===h;});});
+    var labels=labelHours.map(function(hour){
+      var reading=readings.find(function(r){return r.hour===hour;});
+      var smoothed=smoothReadings.find(function(r){return r.hour===hour;})||reading;
+      var pt=point(smoothed);
+      var ly=Math.max(14,pt.y-13);
+      return '<circle class="today-hour-ring" cx="'+pt.x.toFixed(2)+'" cy="'+pt.y.toFixed(2)+'" r="6"/><circle class="today-hour-point" cx="'+pt.x.toFixed(2)+'" cy="'+pt.y.toFixed(2)+'" r="3.2"/><text class="today-hour-label" x="'+pt.x.toFixed(2)+'" y="'+ly.toFixed(2)+'">'+Math.round(reading.value)+'</text>';
+    }).join('');
+    var hour=Number(String(data.current.time).slice(11,13)), minute=Number(String(data.current.time).slice(14,16))||0;
+    var currentHour=Math.max(0,Math.min(23,hour+minute/60));
+    var ix=Math.min(readings.length-2,Math.max(0,Math.floor(currentHour)));
+    while(ix<readings.length-2&&readings[ix+1].hour<currentHour)ix++;
+    var p1=smoothReadings[ix], p2=smoothReadings[ix+1], fraction=(currentHour-p1.hour)/Math.max(1,p2.hour-p1.hour);
+    fraction=Math.min(1,Math.max(0,fraction));
+    var currentValue=p1.value+(p2.value-p1.value)*fraction;
+    var active=point({hour:currentHour,value:currentValue});
+    var shade=d+' L '+pts[pts.length-1].x.toFixed(2)+' 132 L '+pts[0].x.toFixed(2)+' 132 Z';
+    graphic.innerHTML='<defs><linearGradient id="today-fade" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d4e6d3" stop-opacity=".16"/><stop offset="1" stop-color="#d4e6d3" stop-opacity="0"/></linearGradient></defs>'+
+      '<g stroke="#e4f0df" stroke-width="1" stroke-opacity=".12" stroke-dasharray="2 6">'+guides+'</g>'+
+      '<path d="'+shade+'" fill="url(#today-fade)"/>'+
+      '<path d="'+d+'" fill="none" stroke="#d9e9d6" stroke-width="2.15" vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round"/>'+
+      '<g>'+labels+'</g>'+
+      '<path class="today-current-guide" d="M'+active.x.toFixed(2)+' 9 V132" vector-effect="non-scaling-stroke"/>'+
+      '<circle class="today-current-halo" cx="'+active.x.toFixed(2)+'" cy="'+active.y.toFixed(2)+'" r="6"/>'+
+      '<circle class="today-current-dot" cx="'+active.x.toFixed(2)+'" cy="'+active.y.toFixed(2)+'" r="3"/>';
+    graphic.setAttribute('aria-label','Today, '+degrees(low)+' minimum and '+degrees(high)+' maximum. Hourly temperatures shown for selected times.');
+  }
+
   function valid(d){return !!(d&&d.current&&d.daily&&Array.isArray(d.daily.time)&&d.daily.time.length>=6&&Array.isArray(d.daily.temperature_2m_max)&&d.daily.temperature_2m_max.length>=6&&Array.isArray(d.daily.temperature_2m_min)&&Array.isArray(d.daily.weather_code));}
   function render(data,ts,offline){
     if(!valid(data))return;
     var now=data.current,condition=description(Number(now.weather_code),Number(now.is_day)===0);
     $('current-temp').textContent=degrees(now.temperature_2m);
     $('current-condition').textContent=condition[0];
-    $('current-icon').innerHTML=icon(condition[1]);
+    drawToday(data);
     $('weather-now-icon').innerHTML=icon(condition[1]);
     $('weather-now-temp').textContent=degrees(now.temperature_2m);
     $('weather-now-condition').textContent=condition[0];
